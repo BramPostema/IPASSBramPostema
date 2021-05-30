@@ -17,7 +17,7 @@ var teller =1;
 function InloggenKlopt(){
     var gebruikersnaam = String(document.getElementById("Gebruikersnaam").value);
     var wachtwoord = String(document.getElementById("wachtwoord").value);
-    if (gebruikersnaam == null && wachtwoord==null){
+    if (gebruikersnaam == '' && wachtwoord==''){
     document.getElementById("Inloggen").style.display = "none";
     ShowPagina('knoppen');
     ShowPagina('Home');
@@ -38,11 +38,10 @@ function ShowPagina(pagina) {
 function DagAanmaken(){
     // var myClass = Java.type("nl.hu.ipass.IpassTest.Main");
     // myClass.dagAanmaken(document.getElementById("Notitie").value);
-    print(document.getElementById('errorname'));
     if (document.getElementById('Datum').value==null||String(document.getElementById('Notitie').value)==null){
         document.getElementById('errorname').innerHTML = 'foutje';
     }
-    document.getElementById('Datum');
-    document.getElementById('Notitie');
-    document.getElementById('bijwerkingenBox');
+    // document.getElementById('Datum');
+    // document.getElementById('Notitie');
+    // document.getElementById('bijwerkingenBox');
 }
