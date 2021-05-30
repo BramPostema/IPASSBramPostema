@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="IPASS_Bram-2021-Tomcat:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>IPASS_Bram-2021-Tomcat</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="IpassTest-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="IPASS_Bram-2021-Tomcat:war exploded" />
+    </root>
+  </artifact>
+</component>
