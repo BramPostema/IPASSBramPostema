@@ -56,6 +56,8 @@
     </form>
     <button onclick="DagAanmaken()">Aanmaken</button>
     <!-- <img src="mooimaken.jpg" width="600" height="300"> <br> <br> -->
+    <span id="errorname"></span>
+    <label id="nietalleveldeningevult"></label>
     <label id="aangemaakt"></label>
 
 </div>
