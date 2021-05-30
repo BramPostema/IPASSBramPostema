@@ -38,8 +38,9 @@ function ShowPagina(pagina) {
 function DagAanmaken(){
     // var myClass = Java.type("nl.hu.ipass.IpassTest.Main");
     // myClass.dagAanmaken(document.getElementById("Notitie").value);
-    if (document.getElementById('Datum').value==null||String(document.getElementById('Notitie').value)==null){
-        document.getElementById('errorname').innerHTML = 'foutje';
+    // document.getElementById('errorname');
+    if (document.getElementById('Datum').value==''||String(document.getElementById('Notitie').value)==''){
+        document.getElementById('nietalleveldeningevult').innerHTML = 'foutje';
     }
     // document.getElementById('Datum');
     // document.getElementById('Notitie');
