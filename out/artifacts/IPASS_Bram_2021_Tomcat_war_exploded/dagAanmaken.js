@@ -15,8 +15,8 @@ function ShowInloggen() {
 }
 var teller =1;
 function InloggenKlopt(){
-    gebruikersnaam = String(document.getElementById("Gebruikersnaam").value);
-    wachtwoord = String(document.getElementById("wachtwoord").value);
+    var gebruikersnaam = String(document.getElementById("Gebruikersnaam").value);
+    var wachtwoord = String(document.getElementById("wachtwoord").value);
     if (gebruikersnaam == '' && wachtwoord==''){
     document.getElementById("Inloggen").style.display = "none";
     ShowPagina('knoppen');
