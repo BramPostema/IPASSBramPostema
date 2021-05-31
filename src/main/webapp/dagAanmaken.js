@@ -35,14 +35,29 @@ function ShowPagina(pagina) {
     document.getElementById(pagina).style.display = "block";
 }
 
+// function DagAanmaken(){
+//     // var myClass = Java.type("nl.hu.ipass.IpassTest.Main");
+//     // myClass.dagAanmaken(document.getElementById("Notitie").value);
+//     // document.getElementById('errorname');
+//     if (document.getElementById('Datum').value==''||String(document.getElementById('Notitie').value)==''){
+//         document.getElementById('nietalleveldeningevult').innerHTML = 'foutje';
+//     }
+//     // document.getElementById('Datum');
+//     // document.getElementById('Notitie');
+//     // document.getElementById('bijwerkingenBox');
+// }
 function DagAanmaken(){
-    // var myClass = Java.type("nl.hu.ipass.IpassTest.Main");
-    // myClass.dagAanmaken(document.getElementById("Notitie").value);
-    // document.getElementById('errorname');
-    if (document.getElementById('Datum').value==''||String(document.getElementById('Notitie').value)==''){
-        document.getElementById('nietalleveldeningevult').innerHTML = 'foutje';
-    }
-    // document.getElementById('Datum');
-    // document.getElementById('Notitie');
-    // document.getElementById('bijwerkingenBox');
+    console.log(document.getElementById('DagMakenVeld').value)
+    console.log(document.getElementById('bijwerkingenBox').value)
+    console.log(document.getElementById('Datum').value)
+    console.log(document.getElementById('Notitie').value)
+        var formData = new FormData(document.querySelector('#DagMakenVeld'));
+        var encData = new URLSearchParams(formData.entries());
+        console.log("hallo"+encData)
+        // fetch("ja", {method: 'POST', body: encData})
+        //     .then(response => response.json())
+        //     .then(function (myjson){
+        //         console.log(myjson);
+        //     });
+
 }
