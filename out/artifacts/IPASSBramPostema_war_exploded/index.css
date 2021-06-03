@@ -1,0 +1,57 @@
+body {
+    background-color: rgba(0, 89, 255, 0.295);
+    margin: 0px; 
+    text-align:left;
+}
+#knoppen{
+    background-image: url("Header2.jpg");
+    height: 140px;
+    text-align:center;
+}
+#basis {
+    text-align:center;
+} 
+
+#basis h1 {
+	margin-block-start: 0px;
+    padding-top: 30px;
+	color: rgb(66, 0, 128);
+	margin-bottom: 0;
+}
+
+#basis div {
+    margin-top: 0px;
+}
+
+.blauwebox {
+    width:1000px;
+    margin: auto;
+	background-color:#00e1ff48;
+    margin-top: 30px;
+	margin-bottom: 60px;
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 20px;
+    font-family: verdana, sans-serif;
+    font-size: 15px;
+    align-content: center;
+}     
+
+
+
+#footer {
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.507);
+    color: white;
+    bottom: 0px;
+    text-align: center;
+}
+
+.blauwebox h2{
+    font-size: 20px;
+}
+
+.labelSelect form{
+    margin-left: 5pt;
+}
