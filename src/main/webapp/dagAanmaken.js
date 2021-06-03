@@ -53,8 +53,9 @@ function DagAanmaken(){
     console.log(document.getElementById('bijwerking3').value)
     console.log(document.getElementById('Datum').value)
     console.log(document.getElementById('Notitie').value)
-    var id = document.querySelector("#Datum").value;
     console.log(document.getElementById("DagMakenVeld").value)
+
+    var id = document.querySelector("#Datum").value;
     var formData = new FormData(document.querySelector('#DagMakenVeld'));
     var encData = new URLSearchParams(formData.entries());
     console.log(encData)

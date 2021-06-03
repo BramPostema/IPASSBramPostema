@@ -29,18 +29,15 @@ public class DagResource {
         System.out.println("hahallo");
         Patiënt p = new Patiënt("Isa", "Isa", "Isa.Isa@gmail.com");
         ArrayList<Dag> dagen = p.getPatiëntDagen();
+        boolean dagBestaat = false;
         for (Dag dag : dagen) {
-            if(dag.getDatum() != LocalDate.parse((CharSequence) date)){
-                System.out.println("dag bestaat nog neit");
+            if(dag.getDatum() == LocalDate.parse((CharSequence) date)){
+                dagBestaat = true;
         }
         }
-//        if (shopper1 != null) {
-//            return Response.status(Response.Status.CONFLICT).entity(
-//                    new AbstractMap.SimpleEntry<String, String>("error", "Shopper bestaat al")
-//            ).build();
-//        }
-//
-//        shopper1 = new Shopper(name);
+        if(dagBestaat){
+            System.out.println("dag bestaat nog niet");
+        }
         Dag dag = new Dag(ja, notitie, LocalDate.parse((CharSequence) date));
         System.out.println(dag);
         return Response.ok(dag).build();
