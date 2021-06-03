@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="IPASS_Bram-2021-Tomcat" />
+        <module name="IPASSBramPostema" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="IPASS_Bram-2021-Tomcat" target="1.8" />
+      <module name="IPASSBramPostema" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

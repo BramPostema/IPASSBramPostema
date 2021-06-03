@@ -62,7 +62,7 @@ public class Main {
         ArrayList<String> bijwerkingen = new ArrayList<>();
 
         LocalDate date = LocalDate.now();
-        Dag dag = new Dag(bijwerkingen, "", date, Inna);
+        Dag dag = new Dag(bijwerkingen, "", date);
         System.out.println(dag);
     }
 }

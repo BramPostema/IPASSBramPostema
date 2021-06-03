@@ -48,16 +48,20 @@ function ShowPagina(pagina) {
 // }
 function DagAanmaken(){
     console.log(document.getElementById('DagMakenVeld').value)
-    console.log(document.getElementById('bijwerkingenBox').value)
+    console.log(document.getElementById('bijwerking1').value)
+    console.log(document.getElementById('bijwerking2').value)
+    console.log(document.getElementById('bijwerking3').value)
     console.log(document.getElementById('Datum').value)
     console.log(document.getElementById('Notitie').value)
-        var formData = new FormData(document.querySelector('#DagMakenVeld'));
-        var encData = new URLSearchParams(formData.entries());
-        console.log("hallo"+encData)
-        // fetch("ja", {method: 'POST', body: encData})
-        //     .then(response => response.json())
-        //     .then(function (myjson){
-        //         console.log(myjson);
-        //     });
+    var id = document.querySelector("#Datum").value;
+    console.log(document.getElementById("DagMakenVeld").value)
+    var formData = new FormData(document.querySelector('#DagMakenVeld'));
+    var encData = new URLSearchParams(formData.entries());
+    console.log(encData)
+    fetch("dagAanmaken/"+id, {method: 'PUT', body: encData})
+        .then(response => response.json())
+        .then(function (myjson){
+            console.log(myjson);
+        });
 
 }

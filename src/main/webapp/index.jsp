@@ -43,15 +43,29 @@
 
 
     <form id="DagMakenVeld">
-        <label for="bijwerkingenBox">selecteer de bijwerkingen:
+        <label for="bijwerking1">selecteer de bijwerkingen:
 
-        <select id="bijwerkingenBox" data-dropup-auto="false" multiple>
-            <option value="Hoofdpijn">Hoofdpijn</option>
+        <select name="bijwerking1" id="bijwerking1">
+            <option value="Niks">Niks</option>
             <option value="Verminderde eetlust">Verminderde eetlust</option>
             <option value="Hartkloppingen">Hartkloppingen</option>
             <option value="Depressief">Depressief</option>
-            <option value="Niks">Niks</option>
-        </select></label> <br><br>
+            <option value="Hoofdpijn">Hoofdpijn</option>
+        </select>
+            <select name="bijwerking2" id="bijwerking2">
+                <option value="Niks">Niks</option>
+                <option value="Verminderde eetlust">Verminderde eetlust</option>
+                <option value="Hartkloppingen">Hartkloppingen</option>
+                <option value="Depressief">Depressief</option>
+                <option value="Hoofdpijn">Hoofdpijn</option>
+            </select>
+            <select name="bijwerking3" id="bijwerking3">
+                <option value="Niks">Niks</option>
+                <option value="Verminderde eetlust">Verminderde eetlust</option>
+                <option value="Hartkloppingen">Hartkloppingen</option>
+                <option value="Depressief">Depressief</option>
+                <option value="Hoofdpijn">Hoofdpijn</option>
+            </select></label> <br><br>
         <label>datum:<input id="Datum" type="date" /></label><br><br>
         <label>notitie:<input id="Notitie" type="text"></label><br><br>
     </form>

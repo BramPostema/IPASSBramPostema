@@ -14,11 +14,11 @@ public class Dag{
 
 
 
-    public Dag(ArrayList<String> bijw, String extInf, LocalDate dat, ArrayList<Inname> innam){
+    public Dag(ArrayList<String> bijw, String extInf, LocalDate dat){
         this.bijwerkingen = bijw;
         this.datum = dat;
         this.extraInformatie = extInf;
-        this.innames = innam;
+
     }
 
     public ArrayList<String> getBijwerkingen() {
