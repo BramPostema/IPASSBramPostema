@@ -10,8 +10,7 @@ public class Inname {
     private double dosis;
     private Medicatie medicatie;
 
-    public Inname(LocalDate dat, Time tim, double dos, Medicatie med){
-    this.date = dat;
+    public Inname(Time tim, double dos, Medicatie med){
     this.time = tim;
     this.dosis = dos;
     this.medicatie = med;

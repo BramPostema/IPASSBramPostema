@@ -27,6 +27,7 @@ public class MyServlet extends HttpServlet {
             writer.println("</html>");
         }
         System.out.println("hallo");
+
 //        Dag dag = new Dag();
     }
 

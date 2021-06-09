@@ -46,23 +46,31 @@ function ShowPagina(pagina) {
 //     // document.getElementById('Notitie');
 //     // document.getElementById('bijwerkingenBox');
 // }
-function DagAanmaken(){
-    console.log(document.getElementById('DagMakenVeld').value)
-    console.log(document.getElementById('bijwerking1').value)
-    console.log(document.getElementById('bijwerking2').value)
-    console.log(document.getElementById('bijwerking3').value)
-    console.log(document.getElementById('Datum').value)
-    console.log(document.getElementById('Notitie').value)
-    console.log(document.getElementById("DagMakenVeld").value)
+function dagObject(obj) {
+    this.bijwerking1 = obj.bijwerking1;
+    this.Datum = obj.Datum;
+    this.Notitie = obj.Notitie;
+}
 
-    var id = document.querySelector("#Datum").value;
-    var formData = new FormData(document.querySelector('#DagMakenVeld'));
-    var encData = new URLSearchParams(formData.entries());
-    console.log(encData)
-    fetch("dagAanmaken/"+id, {method: 'PUT', body: encData})
-        .then(response => response.json())
-        .then(function (myjson){
-            console.log(myjson);
-        });
+function DagAanmaken(){
+    // console.log(document.getElementById('DagMakenVeld').value)
+    var bijw1 = String(document.getElementById('bijwerking1').value)
+    console.log(document.getElementById('bijwerking1').value)
+    console.log(document.getElementById('bijwerking3').value)
+    // var Datum = document.getElementById('Datum').value
+    console.log(document.getElementById('Notitie').value)
+    // console.log(document.getElementById("DagMakenVeld").value)
+    // var form = document.querySelector("#DagMakenVeld");
+    // console.log(form)
+    // fetch("")
+    var bijwerking1 = document.getElementById('bijwerking1').value;
+    var Datum = document.getElementById('Datum').value;
+    var Notitie = document.getElementById('Notitie').value
+    var Dag = new dagObject({
+        bijwerking1: bijwerking1,
+        Datum: Datum,
+        Notitie: Notitie
+    });
+    fetch("/IPASSBramPostema_war_exploded/Dag", {method: "Post",headers:{'Content-Type': 'application/json'} ,body: JSON.stringify(Dag)})
 
 }

@@ -21,6 +21,8 @@
 </head>
 <body onload="javascript:ShowInloggen();">
 <p>To invoke the java servlet click <a href="MyServlet">here</a></p>
+<p>To invoke the java Dag <a href="Dag">here</a></p>
+<p>To invoke the java dokter <a href="dokter">here</a></p>
 <div id="knoppen">
     <h1>Medicatie Tracker</h1>
     <div>
@@ -43,7 +45,7 @@
 
 
     <form id="DagMakenVeld">
-        <label for="bijwerking1">selecteer de bijwerkingen:
+        selecteer de bijwerkingen:
 
         <select name="bijwerking1" id="bijwerking1">
             <option value="Niks">Niks</option>
@@ -65,9 +67,9 @@
                 <option value="Hartkloppingen">Hartkloppingen</option>
                 <option value="Depressief">Depressief</option>
                 <option value="Hoofdpijn">Hoofdpijn</option>
-            </select></label> <br><br>
-        <label>datum:<input id="Datum" type="date" /></label><br><br>
-        <label>notitie:<input id="Notitie" type="text"></label><br><br>
+            </select> <br><br>
+        datum:<input id="Datum" type="date" /><br><br>
+        notitie:<input id="Notitie" type="text"><br><br>
     </form>
     <button onclick="DagAanmaken()">Aanmaken</button>
     <!-- <img src="mooimaken.jpg" width="600" height="300"> <br> <br> -->

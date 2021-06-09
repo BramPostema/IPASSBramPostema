@@ -1,28 +1,36 @@
 package nl.hu.ipass.IpassTest;
 
-import java.sql.Time;
+import javax.servlet.annotation.WebServlet;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+
 
 public class Dag{
-    private ArrayList<String> bijwerkingen;
+    private String bijwerking1;
     private String extraInformatie;
     private LocalDate datum;
-    private ArrayList<Inname> innames;
+    private ArrayList<Inname> innames = new ArrayList<>();
 
 
 
-    public Dag(ArrayList<String> bijw, String extInf, LocalDate dat){
-        this.bijwerkingen = bijw;
+
+    public Dag(String bijw, String extInf, LocalDate dat){
+        this.bijwerking1 = bijw;
         this.datum = dat;
         this.extraInformatie = extInf;
-
     }
 
-    public ArrayList<String> getBijwerkingen() {
-        return bijwerkingen;
+    public String getBijwerkingen() {
+        return bijwerking1;
     }
 
     public String getExtraInformatie() {
@@ -38,8 +46,8 @@ public class Dag{
         this.datum = datum;
     }
 
-    public void setBijwerkingen(ArrayList<String> bijwerkingen) {
-        this.bijwerkingen = bijwerkingen;
+    public void setBijwerkingen(String bijwerkingen) {
+        this.bijwerking1 = bijwerkingen;
     }
 
 
@@ -62,12 +70,8 @@ public class Dag{
 
     @Override
     public String toString() {
-        return "Dag{" +
-
-                ", bijwerkingen=" + bijwerkingen +
+        return  " bijwerkingen=" + bijwerking1 +
                 ", extraInformatie='" + extraInformatie + '\'' +
-                ", datum=" + datum +
-
-                '}';
+                ", datum=" + datum ;
     }
 }

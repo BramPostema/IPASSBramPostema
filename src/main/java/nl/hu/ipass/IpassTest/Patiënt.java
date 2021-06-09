@@ -8,7 +8,7 @@ public class Patiënt {
     private String wachtwoord;
     private String email;
     private Dokter dokter;
-    private ArrayList<Dag> patiëntDagen= new ArrayList<>();
+    //private ArrayList<Dag> patiëntDagen= new ArrayList<>();
     public Patiënt(String nm, String ww, String mail) {
         this.gebruikersnaam = nm;
         this.wachtwoord = ww;
@@ -32,12 +32,13 @@ public class Patiënt {
     }
 
     public void addPatiëntDagen(Dag dag) {
-        patiëntDagen.add(dag);
+        //patiëntDagen.add(dag);
+        //TODO query
     }
 
-    public ArrayList<Dag> getPatiëntDagen() {
-        return patiëntDagen;
-    }
+//    public ArrayList<Dag> getPatiëntDagen() {
+//        return patiëntDagen;
+//    }
 
     public void setDokter(Dokter dokter) {
         this.dokter = dokter;
@@ -58,7 +59,6 @@ public class Patiënt {
                 ", wachtwoord='" + wachtwoord + '\'' +
                 ", email='" + email + '\'' +
                 ", dokter=" + dokter +
-                ", patiëntDagen=" + patiëntDagen +
-                '}';
+                ", patiëntDagen=" + '}';
     }
 }
