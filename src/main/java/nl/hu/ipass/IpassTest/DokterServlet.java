@@ -59,7 +59,7 @@ public class DokterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        DokterTemplate test;
         String url = "jdbc:sqlite:C:/sqlite/db/test.db";
 //        Connection con = DatabaseCon.connect(url);
         DatabaseCon.connect(url);
@@ -72,18 +72,24 @@ public class DokterServlet extends HttpServlet {
         builder.setPrettyPrinting();
         Gson gson = builder.create();
 
-        DokterTemplate test = gson.fromJson(line, DokterTemplate.class);
-        Dokter.addDokter(test.gebruikersnaam, test.wachtwoord, test.email);
+        test = gson.fromJson(line, DokterTemplate.class);
+//        Dokter.addDokter(test.gebruikersnaam, test.wachtwoord, test.email);
+        String gebnm =test.gebruikersnaam;
+        String testww = test.wachtwoord;
+        String testEmail = test.email;
 
         try{
             System.out.println(request.toString());
 //            System.out.println(Arrays.toString(request.get("gebruikersnaam")));
+            System.out.println(gebnm);
+            System.out.println(testww);
+            System.out.println(testEmail);
+            if (gebnm!=null && testww!=null && testEmail!=null){
 
-            if (test.gebruikersnaam!=null && test.wachtwoord!=null && test.email!=null){
 
-
-                if(Dokter.addDokter(test.gebruikersnaam, test.wachtwoord, test.email) != null){
+                if(Dokter.addDokter(gebnm, testww, testEmail) != null){
                     System.out.println("goed");
+
                     response.setStatus(200);
                 }
                 else{
