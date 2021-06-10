@@ -13,6 +13,16 @@ public final class DatabaseCon {
             try {
                 DatabaseCon.conn = DriverManager.getConnection(url);
                 DatabaseCon.url = url;
+
+            }
+            catch(SQLException e){
+                System.out.println("eerste keer fout");
+                System.out.println(e);
+            }
+            try {
+                DatabaseCon.conn = DriverManager.getConnection(url);
+                DatabaseCon.url = url;
+
             }
             catch(SQLException e){
                 System.out.println("nogsteeds stuk");
