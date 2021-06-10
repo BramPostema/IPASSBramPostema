@@ -12,4 +12,7 @@ class DokterService{
         // gebruikersnaam, wachtwoord, email
         // {gebruikersnaam: gebruikersnaam, wachtwoord: wachtwoord, email: email}
     }
+    getDokter(data){
+
+    }
 }

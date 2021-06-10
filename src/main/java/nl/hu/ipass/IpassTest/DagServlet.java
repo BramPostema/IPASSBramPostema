@@ -1,5 +1,7 @@
 package nl.hu.ipass.IpassTest;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import nl.hu.ipass.IpassTest.Inname;
 
 import javax.servlet.*;
@@ -12,8 +14,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
+class DagTemplate{
+    public String datum;
+    public String bijwerking1;
+    public String bijwerking2;
+    public String bijwerking3;
+    public String notitie;
+}
 
-@WebServlet(name = "Dag", value = "/Dag")
+@WebServlet(name = "dag", value = "/dag")
 public class DagServlet extends HttpServlet {
 //static ArrayList<Dag> dagen = new ArrayList<>();
 
@@ -42,17 +51,19 @@ public class DagServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
-            if (request.getParameterValues("bijwerking1")!=null && request.getParameterValues("Naam")!=null && request.getParameterValues("Notitie")!=null && request.getParameterValues("Datum")!=null){
+        String url = "jdbc:sqlite:C:/sqlite/db/test.db";
+        DatabaseCon.connect(url);
 
-                String bijwerking1 = request.getParameterValues("bijwerking1")[0];
-                String naam = request.getParameterValues("Naam")[0];
-                String notitie = request.getParameterValues("Notitie")[0];
-                String datum = request.getParameterValues("Datum")[0];
+
+        BufferedReader reader = request.getReader();
+        String line = reader.readLine();
+        DagTemplate test = GsonBuild.gsonMaker().fromJson(line, DagTemplate.class);
+        try{
+            if (test.bijwerking1!=null && test.datum!=null && test.notitie!=null){
 
                 try {
-                    LocalDate date = LocalDate.parse(datum);
-                    Dag dag = new Dag(bijwerking1, notitie, date);
+                    LocalDate date = LocalDate.parse(test.datum);
+                    Dag dag = new Dag(test.bijwerking1, test.notitie, date);
                     System.out.println(dag);
                 }
                 catch (DateTimeParseException e){
@@ -65,7 +76,6 @@ public class DagServlet extends HttpServlet {
                 response.setContentType("text/html");
                 response.setCharacterEncoding("UTF-8");
                 response.setStatus(200);
-                return;
 
             }else {
                 System.out.println("mist input string");

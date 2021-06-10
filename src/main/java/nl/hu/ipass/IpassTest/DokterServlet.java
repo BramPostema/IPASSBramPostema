@@ -61,19 +61,15 @@ public class DokterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String url = "jdbc:sqlite:C:/sqlite/db/test.db";
-//        Connection con = DatabaseCon.connect(url);
-        DatabaseCon.connect(url);
-        Gson g = new Gson();
+//        DatabaseCon.connect(url);
+        Connection con = DatabaseCon.connect(url);
+
 
         BufferedReader reader = request.getReader();
         String line = reader.readLine();
         //TODO soms staat json op meerdere lines fix dit
-        GsonBuilder builder = new GsonBuilder();
-        builder.setPrettyPrinting();
-        Gson gson = builder.create();
+        DokterTemplate test = GsonBuild.gsonMaker().fromJson(line, DokterTemplate.class);
 
-        DokterTemplate test = gson.fromJson(line, DokterTemplate.class);
-        Dokter.addDokter(test.gebruikersnaam, test.wachtwoord, test.email);
 
         try{
             System.out.println(request.toString());
