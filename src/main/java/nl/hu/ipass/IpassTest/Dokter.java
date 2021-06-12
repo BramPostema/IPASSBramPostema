@@ -33,7 +33,7 @@ public class Dokter {
         //TODO query geef usernames van alle dokters
         try {
             ArrayList<Dokter> dokters= new ArrayList<>();
-            Connection con = DatabaseCon.getConn();
+            Connection con = DatabaseCon.connect("jdbc:sqlite:/sqlite/db/test.db");
             Statement statement = con.createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM Dokter");
             while (res.next()) {
@@ -49,16 +49,22 @@ public class Dokter {
     public static Dokter addDokter(String gebruikersnaam, String wachtwoord, String email){
         String query = "INSERT INTO Dokter(gebruikersnaam, wachtwoord, email) values('"+gebruikersnaam+"', '"+wachtwoord+"','"+email+"')";
         try{
-            Connection con = DatabaseCon.getConn();
+            Connection con = DatabaseCon.connect("jdbc:sqlite:/sqlite/db/test.db");
             Statement statement = con.createStatement();
             statement.executeUpdate(query);
             return new Dokter(gebruikersnaam);
         }
         catch(SQLException e){
+            System.out.println(e);
             System.out.println(e.getMessage());
             return null;
         }
     }
+
+    public String getGebruikersnaam() {
+        return gebruikersnaam;
+    }
+
     public String getWachtwoord() {
         String query = "SELECT wachtwoord FROM Dokter WHERE gebruikersnaam='"+this.gebruikersnaam+"'";
         try {
@@ -119,7 +125,8 @@ public class Dokter {
 
     @Override
     public String toString() {
-        return "Dokter{" + this.gebruikersnaam+ this.getWachtwoord() + this.getEmail();
+        return "Dokter{" + this.gebruikersnaam;
+//                + this.getWachtwoord() + this.getEmail();
 //                "gebruikersnaam='" + this.gebruikersnaam + '\'' +
 //                ", wachtwoord='" + this.getWachtwoord() + '\'' +
 //                ", email='" + this.getEmail() + '\'' +

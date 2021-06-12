@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 @WebServlet(name = "Inname", value = "/inname")
 public class InnameServlet extends HttpServlet {
@@ -45,10 +46,12 @@ public class InnameServlet extends HttpServlet {
                 String naam = request.getParameterValues("Naam")[0];
                 String notitie = request.getParameterValues("Notitie")[0];
                 String datum = request.getParameterValues("Datum")[0];
+                ArrayList<String> bijwerkingen = new ArrayList<>();
+                bijwerkingen.add(bijwerking1);
 
                 try {
                     LocalDate date = LocalDate.parse(datum);
-                    Dag dag = new Dag(bijwerking1, notitie, date);
+                    Dag dag = new Dag(bijwerkingen, notitie, date);
                     System.out.println(dag);
                 }
                 catch (DateTimeParseException e){

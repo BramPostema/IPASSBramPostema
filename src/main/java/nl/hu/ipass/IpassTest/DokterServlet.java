@@ -59,12 +59,6 @@ public class DokterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String url = "jdbc:sqlite:C:/sqlite/db/test.db";
-//        DatabaseCon.connect(url);
-        Connection con = DatabaseCon.connect(url);
-
-
         BufferedReader reader = request.getReader();
         String line = reader.readLine();
         //TODO soms staat json op meerdere lines fix dit

@@ -9,20 +9,17 @@ public final class DatabaseCon {
     private static String url;
 
     public static Connection connect(String url){
+
         if (DatabaseCon.url == null){
             try {
                 DatabaseCon.conn = DriverManager.getConnection(url);
                 DatabaseCon.url = url;
-
             }
-            catch(SQLException e){
-                System.out.println("eerste keer fout");
-                System.out.println(e);
+            catch(SQLException ignored){
             }
             try {
                 DatabaseCon.conn = DriverManager.getConnection(url);
                 DatabaseCon.url = url;
-
             }
             catch(SQLException e){
                 System.out.println("nogsteeds stuk");
@@ -42,6 +39,7 @@ public final class DatabaseCon {
     }
     public static Connection getConn() throws SQLException{
         if (DatabaseCon.conn == null){
+            System.out.println("is null");
             throw new Error("shit is null");
         }
         else if (DatabaseCon.conn.isValid(0)){

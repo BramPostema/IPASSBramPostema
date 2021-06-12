@@ -1480,7 +1480,6 @@
     <column id="523" parent="174" name="Doktergebruikersnaam">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
     </column>
     <index id="524" parent="174" name="sqlite_autoindex_Patiënt_1">
       <NameSurrogate>1</NameSurrogate>

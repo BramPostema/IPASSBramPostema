@@ -20,7 +20,6 @@
     var data2 = document.getElementById("makenwachtwoord").value
     var data3 = document.getElementById("makenemail").value
     test = {gebruikersnaam:data1, wachtwoord: data2, email: data3}
-    console.log(test);
     service = new DokterService
     service.addDokter(test)
     // addDokter(encData)

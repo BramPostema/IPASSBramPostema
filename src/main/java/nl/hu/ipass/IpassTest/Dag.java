@@ -2,6 +2,9 @@ package nl.hu.ipass.IpassTest;
 
 import javax.servlet.annotation.WebServlet;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -15,7 +18,7 @@ import java.io.PrintWriter;
 
 
 public class Dag{
-    private String bijwerking1;
+    private ArrayList<String> bijwerkingen;
     private String extraInformatie;
     private LocalDate datum;
     private ArrayList<Inname> innames = new ArrayList<>();
@@ -23,14 +26,29 @@ public class Dag{
 
 
 
-    public Dag(String bijw, String extInf, LocalDate dat){
-        this.bijwerking1 = bijw;
+    public Dag(ArrayList<String> bijw, String extInf, LocalDate dat){
+        this.bijwerkingen = bijw;
         this.datum = dat;
         this.extraInformatie = extInf;
     }
+    public static Dag addDag(Dag dag){
+        String query = "INSERT INTO Dag(datum, notitie, bijwerking1, bijwerking2, bijwerking3, Patiëntgebruikersnaam) values('"+dag.datum+"', '"+dag.bijwerkingen.get(0)+"','"+dag.bijwerkingen.get(1)+"','"+dag.bijwerkingen.get(2)+"','"+dag.extraInformatie+"','Isa')";
+        try{
+            Connection con = DatabaseCon.connect("jdbc:sqlite:/sqlite/db/test.db");
+            Statement statement = con.createStatement();
+            statement.executeUpdate(query);
+            return dag;
+        }
+        catch(SQLException e){
+            System.out.println(e);
+            System.out.println(e.getMessage());
+            return null;
+        }
 
-    public String getBijwerkingen() {
-        return bijwerking1;
+    }
+
+    public ArrayList<String> getBijwerkingen() {
+        return bijwerkingen;
     }
 
     public String getExtraInformatie() {
@@ -46,8 +64,8 @@ public class Dag{
         this.datum = datum;
     }
 
-    public void setBijwerkingen(String bijwerkingen) {
-        this.bijwerking1 = bijwerkingen;
+    public void setBijwerkingen(ArrayList<String> bijwerkingen) {
+        this.bijwerkingen = bijwerkingen;
     }
 
 
@@ -70,7 +88,7 @@ public class Dag{
 
     @Override
     public String toString() {
-        return  " bijwerkingen=" + bijwerking1 +
+        return  " bijwerkingen=" + bijwerkingen +
                 ", extraInformatie='" + extraInformatie + '\'' +
                 ", datum=" + datum ;
     }

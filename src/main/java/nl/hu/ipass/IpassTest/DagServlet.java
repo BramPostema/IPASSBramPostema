@@ -20,6 +20,17 @@ class DagTemplate{
     public String bijwerking2;
     public String bijwerking3;
     public String notitie;
+
+    @Override
+    public String toString() {
+        return "DagTemplate{" +
+                "datum='" + datum + '\'' +
+                ", bijwerking1='" + bijwerking1 + '\'' +
+                ", bijwerking2='" + bijwerking2 + '\'' +
+                ", bijwerking3='" + bijwerking3 + '\'' +
+                ", notitie='" + notitie + '\'' +
+                '}';
+    }
 }
 
 @WebServlet(name = "dag", value = "/dag")
@@ -51,23 +62,30 @@ public class DagServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "jdbc:sqlite:C:/sqlite/db/test.db";
+        String url = "jdbc:sqlite:/sqlite/db/test.db";
         DatabaseCon.connect(url);
 
 
         BufferedReader reader = request.getReader();
         String line = reader.readLine();
+        System.out.println(line);
         DagTemplate test = GsonBuild.gsonMaker().fromJson(line, DagTemplate.class);
+        System.out.println(test);
         try{
             if (test.bijwerking1!=null && test.datum!=null && test.notitie!=null){
 
                 try {
+                    ArrayList<String> bijwerkingen = new ArrayList<>();
+                    bijwerkingen.add(test.bijwerking1);
+                    bijwerkingen.add(test.bijwerking2);
+                    bijwerkingen.add(test.bijwerking3);
+                    System.out.println("hij komt tot de datum");
                     LocalDate date = LocalDate.parse(test.datum);
-                    Dag dag = new Dag(test.bijwerking1, test.notitie, date);
+                    Dag dag = new Dag(bijwerkingen, test.notitie, date);
                     System.out.println(dag);
                 }
                 catch (DateTimeParseException e){
-
+                    System.out.println("datumFout"+e);
                     throw new Error("datum invalid");
                 }
 

@@ -48,29 +48,24 @@ function ShowPagina(pagina) {
 // }
 function dagObject(obj) {
     this.bijwerking1 = obj.bijwerking1;
-    this.Datum = obj.Datum;
-    this.Notitie = obj.Notitie;
+    this.bijwerking2 = obj.bijwerking2;
+    this.bijwerking3 = obj.bijwerking3;
+    this.datum = obj.datum;
+    this.notitie = obj.notitie;
 }
 
 function DagAanmaken(){
-    // console.log(document.getElementById('DagMakenVeld').value)
-    var bijw1 = String(document.getElementById('bijwerking1').value)
-    console.log(document.getElementById('bijwerking1').value)
-    console.log(document.getElementById('bijwerking3').value)
-    // var Datum = document.getElementById('Datum').value
-    console.log(document.getElementById('Notitie').value)
-    // console.log(document.getElementById("DagMakenVeld").value)
-    // var form = document.querySelector("#DagMakenVeld");
-    // console.log(form)
-    // fetch("")
-    var bijwerking1 = document.getElementById('bijwerking1').value;
-    var Datum = document.getElementById('Datum').value;
-    var Notitie = document.getElementById('Notitie').value
-    var Dag = new dagObject({
-        bijwerking1: bijwerking1,
-        Datum: Datum,
-        Notitie: Notitie
-    });
-    fetch("/IPASSBramPostema_war_exploded/Dag", {method: "Post",headers:{'Content-Type': 'application/json'} ,body: JSON.stringify(Dag)})
+    var bijwerking11 = document.getElementById('bijwerking1').value;
+    var bijwerking22 = document.getElementById('bijwerking2').value;
+    var bijwerking33 = document.getElementById('bijwerking3').value;
+    var datum1 = document.getElementById('Datum').value;
+    var notitie1 = document.getElementById('Notitie').value
+    // test = {bijwerking1:bijwerking1, bijwerking}
+    // var Dag = new dagObject({
+    //     bijwerking1: bijwerking1, bijwerking2: bijwerking2, bijwerking3: bijwerking3, datum: datum, notitie: notitie
+    // });
+    fetch("/IPASSBramPostema_war_exploded/dag", {method: "Post",headers:{'Content-Type': 'application/json'} ,body: JSON.stringify({bijwerking1: bijwerking11, bijwerking2: bijwerking22, bijwerking3: bijwerking33, datum: datum1, notitie: notitie1})
+    }
+    )
 
 }
