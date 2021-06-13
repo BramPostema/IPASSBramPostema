@@ -91,7 +91,6 @@
             test = {bijwerking1:data1, bijwerking2: data2, bijwerking3: data3, notitie:data4 , datum:data5}
             const service = new DagService;
             service.addDag(test)
-            service.getDag()
             // addDokter(encData)
         }
     </script>

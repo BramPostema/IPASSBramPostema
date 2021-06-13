@@ -3,7 +3,9 @@ class DagService{
     addDag(data){
         console.log(data)
         console.log(JSON.stringify(data))
-        fetch("/restservices/dag",
+        // var key = "Isa"
+        var key = "Asi"
+        fetch("/restservices/dag/"+key,
             {method: "Post",
                 headers:{'Content-Type': 'application/json'},
                 body: JSON.stringify(data)})

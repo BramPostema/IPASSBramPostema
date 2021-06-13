@@ -31,8 +31,8 @@ public class Dag{
         this.datum = dat;
         this.extraInformatie = extInf;
     }
-    public static Dag addDag(Dag dag){
-        String query = "INSERT INTO Dag(datum, notitie, bijwerking1, bijwerking2, bijwerking3, Patiëntgebruikersnaam) values('"+dag.datum+"', '"+dag.bijwerkingen.get(0)+"','"+dag.bijwerkingen.get(1)+"','"+dag.bijwerkingen.get(2)+"','"+dag.extraInformatie+"','Isa')";
+    public static Dag addDag(Dag dag, String gebruikersnaam){
+        String query = "INSERT INTO Dag(datum, notitie, bijwerking1, bijwerking2, bijwerking3, Patiëntgebruikersnaam) values('"+dag.datum+"', '"+dag.extraInformatie+"','"+dag.bijwerkingen.get(0)+"','"+dag.bijwerkingen.get(1)+"','"+dag.bijwerkingen.get(2)+"','"+gebruikersnaam+"')";
         try{
             Connection con = DatabaseCon.connect("jdbc:sqlite:/sqlite/db/test.db");
             Statement statement = con.createStatement();

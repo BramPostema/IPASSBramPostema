@@ -3,14 +3,8 @@ package nl.hu.ipass.IpassTest.webservices;
 
 import nl.hu.ipass.IpassTest.Dokter;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
-import javax.json.JsonReader;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.json.*;
+import javax.ws.rs.*;
 import java.io.StringReader;
 
 
@@ -18,20 +12,24 @@ import java.io.StringReader;
 public class DokterResource {
 
     @GET
-    public String doGet() {
-        String string = "";
-        int teller = 0;
-        Dokter.getDokters();
-        for(Dokter dokter: Dokter.getDokters()){
-            teller++;
-            string += teller+": "+dokter + '\n';
-        }
-        return string;
+    public String getDokterService() {
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+        if(Dokter.getDokters() != null){
+            for(Dokter dokter: Dokter.getDokters()){
+                JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
+                objectBuilder.add("gebruikersnaam", dokter.getGebruikersnaam());
+                objectBuilder.add("wachtwoord", dokter.getEmail());
+                objectBuilder.add("email", dokter.getEmail());
+                arrayBuilder.add(objectBuilder);
+            }}
+        JsonArray array = arrayBuilder.build();
+        return array.toString();
 
     }
+
     @POST
     @Produces("application/json")
-    public void maakDokter(String jsonBody){
+    public void maakDokterService(String jsonBody){
         JsonObjectBuilder responseObject = Json.createObjectBuilder();
         try{
             StringReader strReader = new StringReader(jsonBody);
