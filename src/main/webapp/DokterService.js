@@ -11,6 +11,9 @@ class DokterService{
         body: JSON.stringify(data)})
         // gebruikersnaam, wachtwoord, email
         // {gebruikersnaam: gebruikersnaam, wachtwoord: wachtwoord, email: email}
+        document.getElementById("makengebruikersnaam").innerHTML = ''
+        document.getElementById("makenwachtwoord").innerHTML =''
+        document.getElementById("makenemail").innerHTML = ''
     }
     getDokter(){
         fetch("/restservices/dokter")

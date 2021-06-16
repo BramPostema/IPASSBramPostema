@@ -25,6 +25,7 @@
 <p>To invoke the java servlet click <a href="MyServlet">here</a></p>
 <p>To invoke the java Dag <a href="restservices/dag">here</a></p>
 <p>To invoke the java dokter <a href="restservices/dokter">here</a></p>
+<p>Klik hier om een doker account aan te maken ==> <a href="accountAanmaken.html">DoktersAccountAanmaken</a></p>
 <div id="knoppen">
     <h1>Medicatie Tracker</h1>
     <div>
