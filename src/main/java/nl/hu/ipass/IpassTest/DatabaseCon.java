@@ -1,15 +1,13 @@
 package nl.hu.ipass.IpassTest;
 
-import javax.xml.crypto.Data;
-import javax.xml.transform.Result;
 import java.sql.*;
 
 public final class DatabaseCon {
     private static Connection conn;
     private static String url;
 
-    public static Connection connect(String url){
-
+    public static Connection connect(){
+        String url = "jdbc:sqlite:/sqlite/db/test.db";
         if (DatabaseCon.url == null){
             try {
                 DatabaseCon.conn = DriverManager.getConnection(url);
@@ -27,27 +25,5 @@ public final class DatabaseCon {
             }
         }
         return conn;
-    }
-
-    public static ResultSet executeQuery(String query) throws SQLException{
-
-            Connection con = DatabaseCon.getConn();
-            Statement statement = con.createStatement();
-            return statement.executeQuery(query);
-
-
-    }
-    public static Connection getConn() throws SQLException{
-        if (DatabaseCon.conn == null){
-            System.out.println("is null");
-            throw new Error("shit is null");
-        }
-        else if (DatabaseCon.conn.isValid(0)){
-            return DatabaseCon.conn;
-        }
-        else{
-            throw new Error("verbinding faalt");
-        }
-
     }
 }

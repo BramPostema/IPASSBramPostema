@@ -34,7 +34,7 @@ public class Dag{
     public static Dag addDag(Dag dag, String gebruikersnaam){
         String query = "INSERT INTO Dag(datum, notitie, bijwerking1, bijwerking2, bijwerking3, Patiëntgebruikersnaam) values('"+dag.datum+"', '"+dag.extraInformatie+"','"+dag.bijwerkingen.get(0)+"','"+dag.bijwerkingen.get(1)+"','"+dag.bijwerkingen.get(2)+"','"+gebruikersnaam+"')";
         try{
-            Connection con = DatabaseCon.connect("jdbc:sqlite:/sqlite/db/test.db");
+            Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
             statement.executeUpdate(query);
             return dag;

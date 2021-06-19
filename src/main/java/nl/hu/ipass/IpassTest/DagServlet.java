@@ -62,10 +62,7 @@ public class DagServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "jdbc:sqlite:/sqlite/db/test.db";
-        DatabaseCon.connect(url);
-
-
+        DatabaseCon.connect();
         BufferedReader reader = request.getReader();
         String line = reader.readLine();
         System.out.println(line);

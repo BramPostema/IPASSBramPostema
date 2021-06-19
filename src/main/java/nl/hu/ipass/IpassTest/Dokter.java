@@ -11,7 +11,7 @@ public class Dokter {
     public boolean isValid(){
         //TODO kijk of this.gebruikersnaam ook echt in de table van dokters staat
         try {
-            Connection con = DatabaseCon.getConn();
+            Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
             ResultSet res = statement.executeQuery("select count(gebruikersnaam) from Dokter where gebruikersnaam='"+this.gebruikersnaam+"'");
             return res.getInt(1)==1;
@@ -33,7 +33,7 @@ public class Dokter {
         //TODO query geef usernames van alle dokters
         try {
             ArrayList<Dokter> dokters= new ArrayList<>();
-            Connection con = DatabaseCon.connect("jdbc:sqlite:/sqlite/db/test.db");
+            Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM Dokter");
             while (res.next()) {
@@ -49,7 +49,7 @@ public class Dokter {
     public static Dokter addDokter(String gebruikersnaam, String wachtwoord, String email){
         String query = "INSERT INTO Dokter(gebruikersnaam, wachtwoord, email) values('"+gebruikersnaam+"', '"+wachtwoord+"','"+email+"')";
         try{
-            Connection con = DatabaseCon.connect("jdbc:sqlite:/sqlite/db/test.db");
+            Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
             statement.executeUpdate(query);
             return new Dokter(gebruikersnaam);
@@ -68,7 +68,7 @@ public class Dokter {
     public String getWachtwoord() {
         String query = "SELECT wachtwoord FROM Dokter WHERE gebruikersnaam='"+this.gebruikersnaam+"'";
         try {
-            Connection con = DatabaseCon.getConn();
+            Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
             return statement.executeQuery(query).getString(1);
         }
@@ -80,6 +80,16 @@ public class Dokter {
 
 
     public void setWachtwoord(String wachtwoord) {
+        String query = "UPDATE Dokter SET wachtwoord = '"+wachtwoord+"' where gebruikersnaam = '"+gebruikersnaam+"' ";
+        try {
+            Connection con = DatabaseCon.connect();
+            Statement statement = con.createStatement();
+            statement.executeQuery(query);
+        }
+        catch (SQLException e){
+            System.out.println(e);
+
+        }
         //TODO: query
         //.wachtwoord = wachtwoord;
     }
@@ -87,7 +97,7 @@ public class Dokter {
     public String getEmail() {
         String query = "SELECT email FROM Dokter WHERE gebruikersnaam='"+this.gebruikersnaam+"'";
         try {
-            Connection con = DatabaseCon.getConn();
+            Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
             return statement.executeQuery(query).getString(1);
         }
@@ -99,7 +109,7 @@ public class Dokter {
     public void setEmail(String email) {
         String query = "UPDATE Dokter SET email = '"+email+"' where gebruikersnaam = '"+gebruikersnaam+"' ";
         try {
-            Connection con = DatabaseCon.getConn();
+            Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
             statement.executeQuery(query);
         }

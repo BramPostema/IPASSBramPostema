@@ -17,6 +17,7 @@ var teller =1;
 function InloggenKlopt(){
     gebruikersnaam = String(document.getElementById("Gebruikersnaam").value);
     wachtwoord = String(document.getElementById("wachtwoord").value);
+    fetch()
     if (gebruikersnaam == '' && wachtwoord==''){
     document.getElementById("Inloggen").style.display = "none";
     ShowPagina('knoppen');
@@ -35,37 +36,5 @@ function ShowPagina(pagina) {
     document.getElementById(pagina).style.display = "block";
 }
 
-// function DagAanmaken(){
-//     // var myClass = Java.type("nl.hu.ipass.IpassTest.Main");
-//     // myClass.dagAanmaken(document.getElementById("Notitie").value);
-//     // document.getElementById('errorname');
-//     if (document.getElementById('Datum').value==''||String(document.getElementById('Notitie').value)==''){
-//         document.getElementById('nietalleveldeningevult').innerHTML = 'foutje';
-//     }
-//     // document.getElementById('Datum');
-//     // document.getElementById('Notitie');
-//     // document.getElementById('bijwerkingenBox');
-// }
-function dagObject(obj) {
-    this.bijwerking1 = obj.bijwerking1;
-    this.bijwerking2 = obj.bijwerking2;
-    this.bijwerking3 = obj.bijwerking3;
-    this.datum = obj.datum;
-    this.notitie = obj.notitie;
-}
 
-function DagAanmaken(){
-    var bijwerking11 = document.getElementById('bijwerking1').value;
-    var bijwerking22 = document.getElementById('bijwerking2').value;
-    var bijwerking33 = document.getElementById('bijwerking3').value;
-    var datum1 = document.getElementById('Datum').value;
-    var notitie1 = document.getElementById('Notitie').value
-    // test = {bijwerking1:bijwerking1, bijwerking}
-    // var Dag = new dagObject({
-    //     bijwerking1: bijwerking1, bijwerking2: bijwerking2, bijwerking3: bijwerking3, datum: datum, notitie: notitie
-    // });
-    fetch("/IPASSBramPostema_war_exploded/dag", {method: "Post",headers:{'Content-Type': 'application/json'} ,body: JSON.stringify({bijwerking1: bijwerking11, bijwerking2: bijwerking22, bijwerking3: bijwerking33, datum: datum1, notitie: notitie1})
-    }
-    )
 
-}
