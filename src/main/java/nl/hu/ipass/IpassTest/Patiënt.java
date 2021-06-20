@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -95,16 +96,35 @@ public class Patiënt {
         this.wachtwoord = wachtwoord;
     }
 
-
-
-    public boolean validateInlog(String gebruikersnaamInvoer, String wachtwoordInvoer){
+    public static ArrayList<Dag> getDagen(String patientNaam) {
+        ArrayList<Dag> dagen = new ArrayList<>();
         try {
             Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
-            ResultSet res = statement.executeQuery("select gebruikersnaam, wachtwoord from Patiënt where gebruikersnaam='"+this.gebruikersnaam+"'");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Dag WHERE Patiëntgebruikersnaam='" + patientNaam + "'");
+            while (resultSet.next()) {
+                ArrayList<String> bijwerkingen = new ArrayList<>();
+                bijwerkingen.add(resultSet.getString(3));
+                bijwerkingen.add(resultSet.getString(4));
+                bijwerkingen.add(resultSet.getString(5));
+                dagen.add(new Dag(bijwerkingen, resultSet.getString(2), LocalDate.parse(resultSet.getString(1))));
+            }
+            System.out.println(dagen);
+            return dagen;
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public static boolean validateInlog(String gebruikersnaamInvoer, String wachtwoordInvoer){
+        try {
+            Connection con = DatabaseCon.connect();
+            Statement statement = con.createStatement();
+            ResultSet res = statement.executeQuery("select gebruikersnaam, wachtwoord from Patiënt where gebruikersnaam='"+gebruikersnaamInvoer+"'");
             System.out.println(res);
             System.out.println(res.getString(1)+res.getString(2));
-            if(res.getString(1)==gebruikersnaamInvoer && res.getString(2)==wachtwoordInvoer){
+            if(res.getString(1).equals(gebruikersnaamInvoer) && res.getString(2).equals(wachtwoordInvoer)){
                 return true;
             }else {
                 return false;
@@ -125,6 +145,31 @@ public class Patiënt {
     }
     public String getEmail() {
         return email;
+    }
+
+    public static String getWachtwoordDatabase(String gebruikersnaam) {
+        String query = "SELECT wachtwoord FROM Patiënt WHERE gebruikersnaam='"+gebruikersnaam+"'";
+        try {
+            Connection con = DatabaseCon.connect();
+            Statement statement = con.createStatement();
+            return statement.executeQuery(query).getString(1);
+        }
+        catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    public static String getEmailDatabase(String gebruikersnaam) {
+        String query = "SELECT email FROM Patiënt WHERE gebruikersnaam='"+gebruikersnaam+"'";
+        try {
+            Connection con = DatabaseCon.connect();
+            Statement statement = con.createStatement();
+            return statement.executeQuery(query).getString(1);
+        }
+        catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
     }
 
     @Override

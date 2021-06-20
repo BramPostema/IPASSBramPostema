@@ -5,7 +5,7 @@ class PatientService {
         console.log(JSON.stringify(data))
         // var key = "Isa"
         var key = "Asi"
-        fetch("/restservices/dag/"+key,
+        fetch("/restservices/patient/"+key,
             {method: "Post",
                 headers:{'Content-Type': 'application/json'},
                 body: JSON.stringify(data)})

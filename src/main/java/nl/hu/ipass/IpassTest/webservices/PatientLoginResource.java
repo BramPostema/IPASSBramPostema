@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class PatientLoginResource {
     @POST
-    public boolean inlogGet(String jsonBody){
+    public String inlogGet(String jsonBody){
         StringReader strReader = new StringReader(jsonBody);
         JsonReader jsonReader = Json.createReader(strReader);
         JsonObject jsonObject = jsonReader.readObject();
@@ -21,6 +21,6 @@ public class PatientLoginResource {
         String ww =jsonObject.getString("wachtwoord");
         System.out.println(gebn);
         System.out.println(ww);
-        return true;
+        return "ja";
     }
 }

@@ -2,6 +2,7 @@ package nl.hu.ipass.IpassTest.webservices;
 
 import nl.hu.ipass.IpassTest.Dag;
 import nl.hu.ipass.IpassTest.Dokter;
+import nl.hu.ipass.IpassTest.Patiënt;
 
 import javax.json.*;
 import javax.ws.rs.*;
@@ -16,19 +17,35 @@ public class DagResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String doGet() {
+    @Path("{gebruikersnaam}")
+    public String doGet(@PathParam("gebruikersnaam") String gebruikersnaam) {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-        if(Dokter.getDokters() != null){
-            for(Dokter dokter: Dokter.getDokters()){
-                JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
-                objectBuilder.add("gebruikersnaam", dokter.getGebruikersnaam());
-                objectBuilder.add("wachtwoord", dokter.getEmail());
-                objectBuilder.add("email", dokter.getEmail());
-                arrayBuilder.add(objectBuilder);
-            }}
+        ArrayList<Dag> dagen = Patiënt.getDagen(gebruikersnaam);
+        for(Dag dag:dagen) {
+            JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
+            objectBuilder.add("datum", Patiënt.getWachtwoordDatabase(gebruikersnaam));
+            objectBuilder.add("notitie", Patiënt.getEmailDatabase(gebruikersnaam));
+            objectBuilder.add("email", dagen.toString());
+            arrayBuilder.add(objectBuilder);
+        }
         JsonArray array = arrayBuilder.build();
         return array.toString();
-
+    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String doGet() {
+        String gebruikersnaam = "Isa";
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+        ArrayList<Dag> dagen = Patiënt.getDagen(gebruikersnaam);
+        for (Dag dag : dagen) {
+            JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
+            objectBuilder.add("datum", Patiënt.getWachtwoordDatabase(gebruikersnaam));
+            objectBuilder.add("notitie", Patiënt.getEmailDatabase(gebruikersnaam));
+            objectBuilder.add("email", dagen.toString());
+            arrayBuilder.add(objectBuilder);
+        }
+        JsonArray array = arrayBuilder.build();
+        return array.toString();
     }
     @POST
     @Path("{test}")

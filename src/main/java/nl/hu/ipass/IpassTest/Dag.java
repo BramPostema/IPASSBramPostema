@@ -3,18 +3,12 @@ package nl.hu.ipass.IpassTest;
 import javax.servlet.annotation.WebServlet;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-
-import javax.servlet.http.HttpServlet;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.IOException;
-import java.io.PrintWriter;
-
+import java.util.Date;
 
 
 public class Dag{
@@ -44,7 +38,35 @@ public class Dag{
             System.out.println(e.getMessage());
             return null;
         }
-
+    }
+    public static String getNotitie(Date datum){
+        String query = "SELECT notitie FROM Dag WHERE datum='"+datum+"'";
+        try {
+            Connection con = DatabaseCon.connect();
+            Statement statement = con.createStatement();
+            return statement.executeQuery(query).getString(1);
+        }
+        catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    public static ArrayList<String> getBijwerkingen(Date datum, String gebruikersnaam){
+        String query = "SELECT bijwerking1, bijwerking2, bijwerking3 FROM Dag WHERE datum='"+datum+"' AND Patiëntgebruikersnaam='"+gebruikersnaam+"'";
+        ArrayList<String> bijwerkingen = new ArrayList<>();
+        try {
+            Connection con = DatabaseCon.connect();
+            Statement statement = con.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            bijwerkingen.add(resultSet.getString(1));
+            bijwerkingen.add(resultSet.getString(2));
+            bijwerkingen.add(resultSet.getString(3));
+            return bijwerkingen;
+        }
+        catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
     }
 
     public ArrayList<String> getBijwerkingen() {

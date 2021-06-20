@@ -22,6 +22,7 @@ public final class DatabaseCon {
             catch(SQLException e){
                 System.out.println("nogsteeds stuk");
                 System.out.println(e);
+
             }
         }
         return conn;

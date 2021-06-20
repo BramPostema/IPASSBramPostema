@@ -74,28 +74,13 @@
             </select> <br><br>
         datum:<input id="Datum" type="date" /><br><br>
         notitie:<input id="Notitie" type="text"><br><br>
-        submit: <input type="button" onclick="aanmakendag()"/>
+        submit: <input type="button" onclick="new DagService().addDag()"/>
     </form>
 
     <!-- <img src="mooimaken.jpg" width="600" height="300"> <br> <br> -->
 <%--    <span id="errorname"></span>--%>
     <label id="nietalleveldeningevult"></label>
     <label id="aangemaakt"></label>
-    <script type="text/javascript">
-
-        function aanmakendag(){
-            var data1 = document.getElementById("bijwerking1").value
-            var data2 = document.getElementById("bijwerking2").value
-            var data3 = document.getElementById("bijwerking3").value
-            var data4 = document.getElementById("Notitie").value
-            var data5 = document.getElementById("Datum").value
-
-            test = {bijwerking1:data1, bijwerking2: data2, bijwerking3: data3, notitie:data4 , datum:data5}
-            const service = new DagService;
-            service.addDag(test)
-            // addDokter(encData)
-        }
-    </script>
 
 </div>
 <div class="blauwebox" id="InnameNoteren"><h2>InnameNoteren</h2></div>
