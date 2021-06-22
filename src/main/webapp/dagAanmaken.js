@@ -17,12 +17,12 @@ var teller =1;
 function InloggenKlopt(){
     gebruikersnaam = String(document.getElementById("Gebruikersnaam").value);
     wachtwoord = String(document.getElementById("wachtwoord").value);
-    fetch()
-    if (gebruikersnaam == '' && wachtwoord==''){
+    if (gebruikersnaam == 'klaas' && wachtwoord==''){
     document.getElementById("Inloggen").style.display = "none";
     ShowPagina('knoppen');
     ShowPagina('Home');
     teller=1;
+    window.sessionStorage.setItem("gebruikersnaamUser", gebruikersnaam)
     }else{
         document.getElementById("Gebruikersnaam").value= '';
         document.getElementById("wachtwoord").value= '';

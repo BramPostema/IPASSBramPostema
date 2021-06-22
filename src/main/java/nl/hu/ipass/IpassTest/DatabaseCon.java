@@ -7,7 +7,7 @@ public final class DatabaseCon {
     private static String url;
 
     public static Connection connect(){
-        String url = "jdbc:sqlite:/sqlite/db/test.db";
+        String url = "jdbc:sqlite:C:\\Users\\bramp\\IdeaProjects\\IPASSBramPostema\\sqlite\\db\\test.db";
         if (DatabaseCon.url == null){
             try {
                 DatabaseCon.conn = DriverManager.getConnection(url);

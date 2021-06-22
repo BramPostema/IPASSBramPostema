@@ -24,13 +24,28 @@ class PatientService {
 
     }
     inlogPatient(){
-        var gebnaam = document.getElementById("Gebruikersnaam").value
-        var wachtwoord = document.getElementById("wachtwoord").value
-        var test = {gebruikersnaam:gebnaam, wachtwoord: wachtwoord}
+        var gebruikersnaam = String(document.getElementById("Gebruikersnaam").value);
+        var wachtwoord = String(document.getElementById("wachtwoord").value);
+        var test = {gebruikersnaam:gebruikersnaam, wachtwoord: wachtwoord}
         console.log(test)
-        fetch("/restservices/patientlogin", {method: "Post",
+        const s = fetch("/restservices/patientlogin", {method: "POST",
             headers:{'Content-Type': 'application/json'},
-            body: JSON.stringify(test)}).then(res => {return String(res)
-            }).then(data => console.log(data))
+            body: JSON.stringify(test)}).then(res => {return res.text()});
+        console.log(s)
+        if (false){
+            document.getElementById("Inloggen").style.display = "none";
+            ShowPagina('knoppen');
+            ShowPagina('Home');
+            teller=1;
+            window.sessionStorage.setItem("gebruikersnaamUser", gebruikersnaam)
+            document.getElementById("Gebruikersnaam").value= '';
+            document.getElementById("wachtwoord").value= '';
+        }else{
+            document.getElementById("Gebruikersnaam").value= '';
+            document.getElementById("wachtwoord").value= '';
+            document.getElementById("inlogtext").innerHTML='foute invoer '+teller;
+            teller+=1;
+        }
+
     }
 }

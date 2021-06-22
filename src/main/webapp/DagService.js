@@ -6,7 +6,7 @@ class DagService{
         var bijwerking3 =document.getElementById("bijwerking3").value
         var notitie =document.getElementById("Notitie").value
         var datum =document.getElementById("Datum").value
-        var key = "Asi"
+        var key = window.sessionStorage.getItem("gebruikersnaamUser")
         var data = {bijwerking1:bijwerking1, bijwerking2:bijwerking2, bijwerking3:bijwerking3, notitie:notitie, datum:datum}
         fetch("/restservices/dag/"+key,
             {method: "Post",

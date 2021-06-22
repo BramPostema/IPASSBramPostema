@@ -1365,14 +1365,12 @@
     </column>
     <index id="501" parent="170" name="sqlite_autoindex_Dag_1">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>datum
-Patiëntgebruikersnaam</ColNames>
+      <ColNames>datum</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
     <key id="502" parent="170">
-      <ColNames>datum
-Patiëntgebruikersnaam</ColNames>
+      <ColNames>datum</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_Dag_1</UnderlyingIndexName>
     </key>
@@ -1417,9 +1415,9 @@ Patiëntgebruikersnaam</ColNames>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="511" parent="172" name="DagPatiëntgebruikersnaam">
+    <column id="511" parent="172" name="dosis">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>double(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="512" parent="172" name="Medicatienaam">
@@ -1427,106 +1425,95 @@ Patiëntgebruikersnaam</ColNames>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="513" parent="172" name="dosis">
-      <Position>5</Position>
-      <DataType>double(10)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="514" parent="172" name="sqlite_autoindex_Inname_1">
+    <index id="513" parent="172" name="sqlite_autoindex_Inname_1">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>tijd
-Dagdatum
-DagPatiëntgebruikersnaam</ColNames>
+      <ColNames>tijd</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="515" parent="172">
-      <ColNames>tijd
-Dagdatum
-DagPatiëntgebruikersnaam</ColNames>
+    <key id="514" parent="172">
+      <ColNames>tijd</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_Inname_1</UnderlyingIndexName>
     </key>
-    <foreign-key id="516" parent="172">
-      <ColNames>Dagdatum
-DagPatiëntgebruikersnaam</ColNames>
+    <foreign-key id="515" parent="172">
+      <ColNames>Dagdatum</ColNames>
       <RefTableName>Dag</RefTableName>
-      <RefColNames>datum
-Patiëntgebruikersnaam</RefColNames>
+      <RefColNames>datum</RefColNames>
     </foreign-key>
-    <foreign-key id="517" parent="172">
+    <foreign-key id="516" parent="172">
       <ColNames>Medicatienaam</ColNames>
       <RefTableName>Medicatie</RefTableName>
       <RefColNames>naam</RefColNames>
     </foreign-key>
-    <column id="518" parent="173" name="naam">
+    <column id="517" parent="173" name="naam">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="519" parent="173" name="sqlite_autoindex_Medicatie_1">
+    <index id="518" parent="173" name="sqlite_autoindex_Medicatie_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>naam</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="520" parent="173">
+    <key id="519" parent="173">
       <ColNames>naam</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_Medicatie_1</UnderlyingIndexName>
     </key>
-    <column id="521" parent="174" name="gebruikersnaam">
+    <column id="520" parent="174" name="gebruikersnaam">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="522" parent="174" name="wachtwoord">
+    <column id="521" parent="174" name="wachtwoord">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="523" parent="174" name="email">
+    <column id="522" parent="174" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="524" parent="174" name="Doktergebruikersnaam">
+    <column id="523" parent="174" name="Doktergebruikersnaam">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <index id="525" parent="174" name="sqlite_autoindex_Patiënt_1">
+    <index id="524" parent="174" name="sqlite_autoindex_Patiënt_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>gebruikersnaam</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="526" parent="174">
+    <key id="525" parent="174">
       <ColNames>gebruikersnaam</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_Patiënt_1</UnderlyingIndexName>
     </key>
-    <foreign-key id="527" parent="174">
+    <foreign-key id="526" parent="174">
       <ColNames>Doktergebruikersnaam</ColNames>
       <RefTableName>Dokter</RefTableName>
       <RefColNames>gebruikersnaam</RefColNames>
     </foreign-key>
-    <column id="528" parent="175" name="type">
+    <column id="527" parent="175" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="529" parent="175" name="name">
+    <column id="528" parent="175" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="530" parent="175" name="tbl_name">
+    <column id="529" parent="175" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="531" parent="175" name="rootpage">
+    <column id="530" parent="175" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="532" parent="175" name="sql">
+    <column id="531" parent="175" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>

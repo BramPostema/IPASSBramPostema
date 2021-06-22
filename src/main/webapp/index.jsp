@@ -22,7 +22,7 @@
     <script type="text/javascript" src="./DagService.js"></script>
     <script type="text/javascript" src="./PatientService.js"></script>
 </head>
-<body onload="javascript:ShowInloggen();">
+<body onload=" javascript:ShowInloggen();">
 <p>To invoke the java servlet click <a href="MyServlet">here</a></p>
 <p>To invoke the java Dag <a href="restservices/dag">here</a></p>
 <p>To invoke the java dokter <a href="restservices/dokter">here</a></p>
@@ -110,6 +110,7 @@
     Gebruikersnaam: <input id="Gebruikersnaam" type="text"  placeholder="Gebruikersnaam" onfocus="this.placeholder=''" onblur="this.placeholder='Gebruikersnaam'" ><br><br>
     Wachtwoord: <input id="wachtwoord" type="password"   placeholder="Wachtwoord" onfocus="this.placeholder=''" onblur="this.placeholder='Wachtwoord'"><br><br>
     <button onclick="new PatientService().inlogPatient()">Inloggen</button><br>
+<%--    <button onclick="InloggenKlopt()">Inloggen</button><br>--%>
     <p id="inlogtext"></p>
 </div>
 <div id="footer">hallooo</div>

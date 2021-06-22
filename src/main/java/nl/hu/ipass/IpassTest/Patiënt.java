@@ -155,7 +155,6 @@ public class Patiënt {
             return statement.executeQuery(query).getString(1);
         }
         catch (SQLException e){
-            System.out.println(e);
             return null;
         }
     }
