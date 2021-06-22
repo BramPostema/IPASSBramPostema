@@ -1,9 +1,5 @@
 package nl.hu.ipass.IpassTest;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import nl.hu.ipass.IpassTest.Inname;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;

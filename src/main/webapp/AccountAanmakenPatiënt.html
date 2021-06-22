@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Medicatie Tracker</title>
+    <script type="text/javascript" src="./PatientService.js"></script>
+</head>
+<body>
+<form id="accountAanmakenVeld">
+    naam: <input type="text" id="makengebruikersnaam" name="naam"/><br><br>
+    ww: <input type="text" id="makenwachtwoord" name="wachtwoord"/><br><br>
+    naam: <input type="text" id="makenemail" name="email"/><br><br>
+    submit: <input type="button" onclick="aanmaken()"/>
+</form>
+<script type="text/javascript">
+
+    function aanmaken(){
+        var data1 = document.getElementById("makengebruikersnaam").value
+        var data2 = document.getElementById("makenwachtwoord").value
+        var data3 = document.getElementById("makenemail").value
+        document.getElementById("makengebruikersnaam").value = ''
+        document.getElementById("makenwachtwoord").value =''
+        document.getElementById("makenemail").value = ''
+        test = {gebruikersnaam:data1, wachtwoord: data2, email: data3}
+        service = new PatientService()
+        service.addPatient(test)
+
+        // addDokter(encData)
+    }
+</script>
+
+</body>

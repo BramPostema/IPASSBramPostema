@@ -1,7 +1,5 @@
 package nl.hu.ipass.IpassTest;
 
-import javax.servlet.annotation.WebServlet;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

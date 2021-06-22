@@ -4,7 +4,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 import nl.hu.ipass.IpassTest.DatabaseCon;
-import nl.hu.ipass.IpassTest.Patiënt;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

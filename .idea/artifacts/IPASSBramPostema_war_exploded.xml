@@ -42,6 +42,8 @@
           <element id="library" level="project" name="Maven: javax.ws.rs:javax.ws.rs-api:2.1.1" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.7" />
           <element id="library" level="project" name="Maven: org.xerial:sqlite-jdbc:3.34.0" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.22" />
+          <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

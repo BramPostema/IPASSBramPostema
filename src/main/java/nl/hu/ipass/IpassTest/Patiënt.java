@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Patiënt {
     private String gebruikersnaam;
@@ -35,16 +34,18 @@ public class Patiënt {
         }
     }
 
-    public boolean isValid(){
+    public static boolean isValid(String gebruikersnaam){
         //TODO kijk of this.gebruikersnaam ook echt in de table van dokters staat
         try {
             Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
-            ResultSet res = statement.executeQuery("select count(gebruikersnaam) from Patiënt where gebruikersnaam='"+this.gebruikersnaam+"'");
+            System.out.println("halo");
+            ResultSet res = statement.executeQuery("select count(gebruikersnaam) from Patiënt where gebruikersnaam='"+gebruikersnaam+"'");
+            res.next();
             return res.getInt(1)==1;
         }
         catch (SQLException e){
-            System.out.println(e);
+            System.out.println(e+" is valid");
         }
         return false;
     }
@@ -117,26 +118,6 @@ public class Patiënt {
         }
     }
 
-    public static boolean validateInlog(String gebruikersnaamInvoer, String wachtwoordInvoer){
-        try {
-            Connection con = DatabaseCon.connect();
-            Statement statement = con.createStatement();
-            ResultSet res = statement.executeQuery("select gebruikersnaam, wachtwoord from Patiënt where gebruikersnaam='"+gebruikersnaamInvoer+"'");
-            System.out.println(res);
-            System.out.println(res.getString(1)+res.getString(2));
-            if(res.getString(1).equals(gebruikersnaamInvoer) && res.getString(2).equals(wachtwoordInvoer)){
-                return true;
-            }else {
-                return false;
-            }
-
-        }
-        catch (SQLException e){
-            System.out.println(e);
-        }
-        return false;
-    }
-
     public String getGebruikersnaam() {
         return gebruikersnaam;
     }
@@ -152,9 +133,18 @@ public class Patiënt {
         try {
             Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
-            return statement.executeQuery(query).getString(1);
+            if(isValid(gebruikersnaam)){
+                ResultSet res =  statement.executeQuery(query);
+                res.next();
+                return res.getString(1);
+            }
+            else {
+                throw new SQLException("Gebruiker bestaat niet!");
+            }
+
         }
         catch (SQLException e){
+            System.out.println(e.getMessage());
             return null;
         }
     }

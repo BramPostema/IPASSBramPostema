@@ -36,5 +36,15 @@ function ShowPagina(pagina) {
     document.getElementById(pagina).style.display = "block";
 }
 
+function SetDate(){
+    var now = new Date();
+    var month = (now.getMonth() + 1);
+    var day = now.getDate();
+    if (month < 10)
+        month = "0" + month;
+    if (day < 10)
+        day = "0" + day;
+    document.getElementById("Datum").value = now.getFullYear() + '-' + month + '-' + day;
 
+}
 

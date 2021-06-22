@@ -23,15 +23,14 @@
     <script type="text/javascript" src="./PatientService.js"></script>
 </head>
 <body onload=" javascript:ShowInloggen();">
-<p>To invoke the java servlet click <a href="MyServlet">here</a></p>
-<p>To invoke the java Dag <a href="restservices/dag">here</a></p>
-<p>To invoke the java dokter <a href="restservices/dokter">here</a></p>
-<p>Klik hier om een doker account aan te maken ==> <a href="accountAanmaken.html">DoktersAccountAanmaken</a></p>
+<p>To invoke the java Dag <a href="restservices/dag">DAGEN</a></p>
+<p><a href="restservices/dokter">DOKTERS</a></p>
+<p>dokter account aanmaken ==> <a href="accountAanmaken.html">DoktersAccountAanmaken</a></p>
 <div id="knoppen">
     <h1>Medicatie Tracker</h1>
     <div>
         <button onclick="ShowPagina('Home')">Home</button>
-        <button onclick="ShowPagina('DagAanmaken')">DagAanmaken</button>
+        <button onclick="ShowPagina('DagAanmaken'); SetDate()" >DagAanmaken</button>
         <button onclick="ShowPagina('InnameNoteren')">InnameNoteren</button>
         <button onclick="ShowPagina('DagenOverzicht')">DagenOverzicht</button>
         <!--Hier komen later meer opties bij-->
@@ -110,6 +109,10 @@
     Gebruikersnaam: <input id="Gebruikersnaam" type="text"  placeholder="Gebruikersnaam" onfocus="this.placeholder=''" onblur="this.placeholder='Gebruikersnaam'" ><br><br>
     Wachtwoord: <input id="wachtwoord" type="password"   placeholder="Wachtwoord" onfocus="this.placeholder=''" onblur="this.placeholder='Wachtwoord'"><br><br>
     <button onclick="new PatientService().inlogPatient()">Inloggen</button><br>
+    <button onclick="location.href='http://82.197.208.233:8080/accountAanmaken.html';">DokterAccountAanmaken</button><br>
+    <button onclick="location.href='http://82.197.208.233:8080/AccountAanmakenPatiënt.html';">PatiëntAccountAanmaken</button><br>
+
+
 <%--    <button onclick="InloggenKlopt()">Inloggen</button><br>--%>
     <p id="inlogtext"></p>
 </div>

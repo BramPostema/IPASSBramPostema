@@ -9,30 +9,28 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.StringReader;
-import java.util.ArrayList;
 
 @Path("patientlogin")
 
 public class PatientLoginResource {
     @POST
+    @Produces(MediaType.TEXT_PLAIN)
     public Response inlogGet(String jsonBody){
         StringReader strReader = new StringReader(jsonBody);
         JsonReader jsonReader = Json.createReader(strReader);
         JsonObject jsonObject = jsonReader.readObject();
         String gebruikersnaam = jsonObject.getString("gebruikersnaam");
         String wachtwoord =jsonObject.getString("wachtwoord");
-        System.out.println(gebruikersnaam);
-        System.out.println(wachtwoord);
-        String wachtwoordDatabase = Patiënt.getWachtwoordDatabase(gebruikersnaam);
-        System.out.println(wachtwoordDatabase);
-        System.out.println(wachtwoord.hashCode());
-        if(wachtwoordDatabase!=null) {
-            System.out.println(wachtwoordDatabase.hashCode());
-        }
-        if(wachtwoordDatabase!=null && wachtwoordDatabase.hashCode() == wachtwoord.hashCode()) {
-            return Response.ok(true).build();
+        System.out.println("invoer: "+gebruikersnaam);
+        System.out.println("invoer: "+wachtwoord);
+        if(Patiënt.isValid(gebruikersnaam)){
+            if(Patiënt.getWachtwoordDatabase(gebruikersnaam).hashCode() == wachtwoord.hashCode()){
+                return Response.ok("true").build();
+            }else {
+                return Response.ok("false").build();
+            }
         }else {
-            return Response.ok(false).build();
+            return Response.ok("false").build();
         }
     }
 }

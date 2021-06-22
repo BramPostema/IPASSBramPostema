@@ -3,18 +3,15 @@ class PatientService {
     addPatient(data){
         console.log(data)
         console.log(JSON.stringify(data))
-        // var key = "Isa"
-        var key = "Asi"
-        fetch("/restservices/patient/"+key,
+        fetch("/restservices/patient",
             {method: "Post",
                 headers:{'Content-Type': 'application/json'},
                 body: JSON.stringify(data)})
-        document.getElementById("bijwerking1").value= 'Niks';
-        document.getElementById("bijwerking2").value= 'Niks';
-        document.getElementById("bijwerking3").value= 'Niks';
-        document.getElementById("Notitie").value= '';
-        document.getElementById("Datum").value= '';
-
+        // gebruikersnaam, wachtwoord, email
+        // {gebruikersnaam: gebruikersnaam, wachtwoord: wachtwoord, email: email}
+        document.getElementById("makengebruikersnaam").innerHTML = ''
+        document.getElementById("makenwachtwoord").innerHTML =''
+        document.getElementById("makenemail").innerHTML = ''
     }
 
     getPatient(){
@@ -23,16 +20,23 @@ class PatientService {
             .then(data => console.log(data))
 
     }
-    inlogPatient(){
-        var gebruikersnaam = String(document.getElementById("Gebruikersnaam").value);
-        var wachtwoord = String(document.getElementById("wachtwoord").value);
-        var test = {gebruikersnaam:gebruikersnaam, wachtwoord: wachtwoord}
+    async inlogPatient(){
+        let gebruikersnaam = String(document.getElementById("Gebruikersnaam").value);
+        let wachtwoord = String(document.getElementById("wachtwoord").value);
+        let test = {gebruikersnaam:gebruikersnaam, wachtwoord: wachtwoord}
+
         console.log(test)
-        const s = fetch("/restservices/patientlogin", {method: "POST",
-            headers:{'Content-Type': 'application/json'},
-            body: JSON.stringify(test)}).then(res => {return res.text()});
+        const s = String(await fetch("/restservices/patientlogin",
+            {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(test)
+            })
+            .then(res => res.text()));
+
         console.log(s)
-        if (false){
+
+        if (s === "true"){
             document.getElementById("Inloggen").style.display = "none";
             ShowPagina('knoppen');
             ShowPagina('Home');
