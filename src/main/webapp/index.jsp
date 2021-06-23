@@ -82,7 +82,22 @@
     <label id="aangemaakt"></label>
 
 </div>
-<div class="blauwebox" id="InnameNoteren"><h2>InnameNoteren</h2></div>
+<div class="blauwebox" id="InnameNoteren"><h2>InnameNoteren</h2>
+    selecteer de medicatie soort het merk wat er achter staat is alleen als hulpmiddel en hoeft niet kloppend te zijn:
+
+    <br><select name="medicatie" id="medicatie">
+        <option value="methylfenidaat kort (Ritalin)">methylfenidaat kort (Ritalin)</option>
+        <option value="methylfenidaat lang (Concerta)">methylfenidaat lang (Concerta)</option>
+        <option value="dexamfetamine kort (Amfexa)">dexamfetamine kort (Amfexa)</option>
+        <option value="dexamfetamine lang (Amfexa)">dexamfetamine lang (Amfexa)</option>
+        <option value="atomoxetine (Strattera)">atomoxetine (Strattera)</option>
+    </select><br><br>
+    datum:<input id="innameDatum" type="date" /><br><br>
+    tijd:<input id="innameTijd" type="time"><br><br>
+    dosis:<input id="dosis" type="number" min="0" value="0" step="0.5"><br><br>
+    submit: <input type="button" onclick="new InnameService().addInname()"/>
+    </form>
+</div>
 <div class="blauwebox" id="DagenOverzicht">
     <h2>DagenOverzicht</h2>
     <table style="width:100%" id="table">

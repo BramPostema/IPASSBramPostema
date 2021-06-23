@@ -16,7 +16,7 @@ class DagService{
         document.getElementById("bijwerking2").value= 'Niks';
         document.getElementById("bijwerking3").value= 'Niks';
         document.getElementById("Notitie").value= '';
-        SetDate()
+        SetDate("Datum")
 
     }
 

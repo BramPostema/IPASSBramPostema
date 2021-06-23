@@ -12,11 +12,11 @@ class InnameService{
             {method: "Post",
                 headers:{'Content-Type': 'application/json'},
                 body: JSON.stringify(data)})
-        document.getElementById("bijwerking1").value= 'Niks';
-        document.getElementById("bijwerking2").value= 'Niks';
-        document.getElementById("bijwerking3").value= 'Niks';
-        document.getElementById("Notitie").value= '';
-        document.getElementById("Datum").value= '';
+        document.getElementById("medicatie").value= 'methylfenidaat kort (Ritalin)';
+        document.getElementById("innameTijd").value= 'Niks';
+        document.getElementById("dosis").value= 0;
+        SetDate("innameDatum")
+
 
     }
 

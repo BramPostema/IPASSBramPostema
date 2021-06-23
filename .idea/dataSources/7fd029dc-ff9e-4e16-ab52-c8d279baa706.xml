@@ -790,7 +790,7 @@ false Zulu
       <ObjectId>13442</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>489</IntrospectionStateNumber>
+      <IntrospectionStateNumber>572</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="3" parent="1" name="pg_execute_server_program">
@@ -861,7 +861,7 @@ UC/10
 </Acl>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>490</IntrospectionStateNumber>
+      <IntrospectionStateNumber>573</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="17" parent="2" name="adminpack">
@@ -1035,22 +1035,25 @@ UC/10
       <StateNumber>488</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="41" parent="30" name="dag_pkey">
-      <ObjectId>16465</ObjectId>
-      <StateNumber>488</StateNumber>
-      <ColNames>datum</ColNames>
+    <index id="41" parent="30" name="primkey">
+      <ObjectId>16497</ObjectId>
+      <StateNumber>527</StateNumber>
+      <ColNames>datum
+patiëntgebruikersnaam</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
       <AccessMethodId>403</AccessMethodId>
-      <CollationIds>0</CollationIds>
-      <ClassIds>3122</ClassIds>
+      <CollationIds>0,100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ClassIds>3122,3126</ClassIds>
     </index>
-    <key id="42" parent="30" name="dag_pkey">
-      <ObjectId>16466</ObjectId>
-      <StateNumber>488</StateNumber>
-      <ColNames>datum</ColNames>
+    <key id="42" parent="30" name="primkey">
+      <ObjectId>16498</ObjectId>
+      <StateNumber>527</StateNumber>
+      <ColNames>datum
+patiëntgebruikersnaam</ColNames>
       <Primary>1</Primary>
-      <UnderlyingIndexName>dag_pkey</UnderlyingIndexName>
+      <UnderlyingIndexName>primkey</UnderlyingIndexName>
     </key>
     <foreign-key id="43" parent="30" name="dag_patiëntgebruikersnaam_fkey">
       <ObjectId>16467</ObjectId>
@@ -1132,37 +1135,33 @@ UC/10
     <column id="53" parent="32" name="patiëntnaam">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>488</StateNumber>
+      <NotNull>1</NotNull>
+      <StateNumber>548</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="54" parent="32" name="inname_pkey">
-      <ObjectId>16478</ObjectId>
-      <StateNumber>488</StateNumber>
-      <ColNames>tijd</ColNames>
+    <index id="54" parent="32" name="inname_pk">
+      <ObjectId>16503</ObjectId>
+      <StateNumber>571</StateNumber>
+      <ColNames>tijd
+dagdatum
+patiëntnaam</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
       <AccessMethodId>403</AccessMethodId>
-      <CollationIds>0</CollationIds>
-      <ClassIds>10037</ClassIds>
+      <CollationIds>0,0,100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ClassIds>10037,3122,3126</ClassIds>
     </index>
-    <key id="55" parent="32" name="inname_pkey">
-      <ObjectId>16479</ObjectId>
-      <StateNumber>488</StateNumber>
-      <ColNames>tijd</ColNames>
+    <key id="55" parent="32" name="inname_pk">
+      <ObjectId>16504</ObjectId>
+      <StateNumber>571</StateNumber>
+      <ColNames>tijd
+dagdatum
+patiëntnaam</ColNames>
       <Primary>1</Primary>
-      <UnderlyingIndexName>inname_pkey</UnderlyingIndexName>
+      <UnderlyingIndexName>inname_pk</UnderlyingIndexName>
     </key>
-    <foreign-key id="56" parent="32" name="inname_dagdatum_fkey">
-      <ObjectId>16480</ObjectId>
-      <StateNumber>488</StateNumber>
-      <ColNames>dagdatum</ColNames>
-      <RefTableId>16459</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>dag</RefTableName>
-      <RefKeyName>dag_pkey</RefKeyName>
-      <RefColNames>datum</RefColNames>
-    </foreign-key>
-    <foreign-key id="57" parent="32" name="inname_medicatienaam_fkey">
+    <foreign-key id="56" parent="32" name="inname_medicatienaam_fkey">
       <ObjectId>16485</ObjectId>
       <StateNumber>488</StateNumber>
       <ColNames>medicatienaam</ColNames>
@@ -1172,7 +1171,7 @@ UC/10
       <RefKeyName>medicatie_pkey</RefKeyName>
       <RefColNames>naam</RefColNames>
     </foreign-key>
-    <foreign-key id="58" parent="32" name="inname_patiëntnaam_fkey">
+    <foreign-key id="57" parent="32" name="inname_patiëntnaam_fkey">
       <ObjectId>16490</ObjectId>
       <StateNumber>488</StateNumber>
       <ColNames>patiëntnaam</ColNames>
@@ -1182,14 +1181,14 @@ UC/10
       <RefKeyName>patiënt_pkey</RefKeyName>
       <RefColNames>gebruikersnaam</RefColNames>
     </foreign-key>
-    <column id="59" parent="33" name="naam">
+    <column id="58" parent="33" name="naam">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>488</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="60" parent="33" name="medicatie_pkey">
+    <index id="59" parent="33" name="medicatie_pkey">
       <ObjectId>16444</ObjectId>
       <StateNumber>488</StateNumber>
       <ColNames>naam</ColNames>
@@ -1200,41 +1199,41 @@ UC/10
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <key id="61" parent="33" name="medicatie_pkey">
+    <key id="60" parent="33" name="medicatie_pkey">
       <ObjectId>16445</ObjectId>
       <StateNumber>488</StateNumber>
       <ColNames>naam</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>medicatie_pkey</UnderlyingIndexName>
     </key>
-    <column id="62" parent="34" name="gebruikersnaam">
+    <column id="61" parent="34" name="gebruikersnaam">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>488</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="63" parent="34" name="wachtwoord">
+    <column id="62" parent="34" name="wachtwoord">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>488</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="64" parent="34" name="email">
+    <column id="63" parent="34" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>488</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="65" parent="34" name="doktergebruikersnaam">
+    <column id="64" parent="34" name="doktergebruikersnaam">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>488</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="66" parent="34" name="patiënt_pkey">
+    <index id="65" parent="34" name="patiënt_pkey">
       <ObjectId>16452</ObjectId>
       <StateNumber>488</StateNumber>
       <ColNames>gebruikersnaam</ColNames>
@@ -1245,14 +1244,14 @@ UC/10
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <key id="67" parent="34" name="patiënt_pkey">
+    <key id="66" parent="34" name="patiënt_pkey">
       <ObjectId>16453</ObjectId>
       <StateNumber>488</StateNumber>
       <ColNames>gebruikersnaam</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>patiënt_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="68" parent="34" name="patiënt_doktergebruikersnaam_fkey">
+    <foreign-key id="67" parent="34" name="patiënt_doktergebruikersnaam_fkey">
       <ObjectId>16454</ObjectId>
       <StateNumber>488</StateNumber>
       <ColNames>doktergebruikersnaam</ColNames>

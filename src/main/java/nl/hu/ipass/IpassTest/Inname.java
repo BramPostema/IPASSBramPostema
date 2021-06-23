@@ -1,5 +1,8 @@
 package nl.hu.ipass.IpassTest;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
 
@@ -14,7 +17,20 @@ public class Inname {
     this.dosis = dos;
     this.medicatie = med;
     }
-
+    public static Inname addInname(Inname inname, String gebruikersnaam){
+        String query = "INSERT INTO Inname(tijd, Dagdatum, dosis, Medicatienaam, Patiëntnaam) values('"+inname.time+"', '"+inname.date+"','"+inname.dosis+"','"+inname.medicatie+"','"+gebruikersnaam+"')";
+        try{
+            Connection con = DatabaseCon.connect();
+            Statement statement = con.createStatement();
+            statement.executeUpdate(query);
+            return inname;
+        }
+        catch(SQLException e){
+            System.out.println(e);
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
     public Time getTime() {
         return time;
     }
