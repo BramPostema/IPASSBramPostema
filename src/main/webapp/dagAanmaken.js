@@ -48,11 +48,11 @@ function SetDate(vakje){
 }
 function SetTime(vakje){
     var now = new Date();
-    var month = (now.getMonth() + 1);
-    var day = now.getDate();
-    if (month < 10)
-        month = "0" + month;
-    if (day < 10)
-        day = "0" + day;
-    document.getElementById(vakje).value = now.getFullYear() + '-' + month + '-' + day;
+    var hours = (now.getHours());
+    var minutes = now.getMinutes();
+    if (hours < 10)
+        hours = "0" + hours;
+    if (minutes < 10)
+        minutes = "0" + minutes;
+    document.getElementById(vakje).value = hours + ':' + minutes;
 }

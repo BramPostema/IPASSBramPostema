@@ -790,7 +790,7 @@ false Zulu
       <ObjectId>13442</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>572</IntrospectionStateNumber>
+      <IntrospectionStateNumber>589</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="3" parent="1" name="pg_execute_server_program">
@@ -861,7 +861,7 @@ UC/10
 </Acl>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>573</IntrospectionStateNumber>
+      <IntrospectionStateNumber>590</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="17" parent="2" name="adminpack">
@@ -1120,9 +1120,9 @@ patiëntgebruikersnaam</ColNames>
     </column>
     <column id="51" parent="32" name="dosis">
       <Position>3</Position>
-      <DataType>numeric(10)|0s</DataType>
+      <DataType>numeric|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>488</StateNumber>
+      <StateNumber>588</StateNumber>
       <TypeId>1700</TypeId>
     </column>
     <column id="52" parent="32" name="medicatienaam">

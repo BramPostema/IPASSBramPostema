@@ -21,6 +21,7 @@
     <script type="text/javascript" src="./DokterService.js"></script>
     <script type="text/javascript" src="./DagService.js"></script>
     <script type="text/javascript" src="./PatientService.js"></script>
+    <script type="text/javascript" src="./InnameService.js"></script>
 </head>
 <body onload=" javascript:ShowInloggen();">
 <p>To invoke the java Dag <a href="restservices/dag">DAGEN</a></p>
@@ -30,8 +31,8 @@
     <h1>Medicatie Tracker</h1>
     <div>
         <button onclick="ShowPagina('Home')">Home</button>
-        <button onclick="ShowPagina('DagAanmaken'); SetDate()" >DagAanmaken</button>
-        <button onclick="ShowPagina('InnameNoteren')">InnameNoteren</button>
+        <button onclick="ShowPagina('DagAanmaken'); SetDate('Datum')" >DagAanmaken</button>
+        <button onclick="ShowPagina('InnameNoteren'); SetDate('innameDatum'); SetTime('innameTijd')">InnameNoteren</button>
         <button onclick="ShowPagina('DagenOverzicht')">DagenOverzicht</button>
         <!--Hier komen later meer opties bij-->
     </div>

@@ -5,19 +5,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Inname {
     private LocalDate date;
-    private Time time;
+    private LocalTime time;
     private double dosis;
     private Medicatie medicatie;
 
-    public Inname(Time tim, double dos, Medicatie med){
+    public Inname(LocalTime tim, double dos, Medicatie med, LocalDate date){
     this.time = tim;
     this.dosis = dos;
     this.medicatie = med;
+    this.date = date;
     }
     public static Inname addInname(Inname inname, String gebruikersnaam){
+        System.out.println(inname.getDate());
+        System.out.println(inname.getTime());
+        System.out.println(inname.getDosis());
+        System.out.println(inname);
         String query = "INSERT INTO Inname(tijd, Dagdatum, dosis, Medicatienaam, Patiëntnaam) values('"+inname.time+"', '"+inname.date+"','"+inname.dosis+"','"+inname.medicatie+"','"+gebruikersnaam+"')";
         try{
             Connection con = DatabaseCon.connect();
@@ -31,7 +37,7 @@ public class Inname {
             return null;
         }
     }
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 

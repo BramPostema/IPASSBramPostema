@@ -1,6 +1,8 @@
 package nl.hu.ipass.IpassTest.webservices;
 
 import nl.hu.ipass.IpassTest.Dag;
+import nl.hu.ipass.IpassTest.Inname;
+import nl.hu.ipass.IpassTest.Medicatie;
 import nl.hu.ipass.IpassTest.Patiënt;
 
 import javax.json.*;
@@ -8,6 +10,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.StringReader;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 @Path("/inname")
@@ -49,29 +52,27 @@ public class InnameResource {
 //    }
 
     @POST
-    @Path("{test}")
-    public void maakInname(@PathParam("test") String gebruikersnaam, String jsonBody) {
+    @Path("{gebruikersnaam}")
+    public void maakInname(@PathParam("gebruikersnaam") String gebruikersnaam, String jsonBody) {
         System.out.println(gebruikersnaam);
         JsonObjectBuilder responseObject = Json.createObjectBuilder();
         try {
             StringReader strReader = new StringReader(jsonBody);
             JsonReader jsonReader = Json.createReader(strReader);
             JsonObject jsonObject = jsonReader.readObject();
-            if (jsonObject.getString("bijwerking1") != null && jsonObject.getString("bijwerking2") != null &&
-                    jsonObject.getString("bijwerking3") != null && jsonObject.getString("notitie") != null &&
-                    jsonObject.getString("datum") != null) {
+            if (jsonObject.getString("medicatie") != null && jsonObject.getString("datum") != null &&
+                    jsonObject.getString("tijd") != null && jsonObject.getString("dosis") != null){
 
-                String bijwerking1 = jsonObject.getString("bijwerking1");
-                String bijwerking2 = jsonObject.getString("bijwerking2");
-                String bijwerking3 = jsonObject.getString("bijwerking3");
+                String medicatie = jsonObject.getString("medicatie");
+                String dosis = jsonObject.getString("dosis");
+                LocalTime tijd = LocalTime.parse(jsonObject.getString("tijd"));
                 LocalDate date = LocalDate.parse(jsonObject.getString("datum"));
-                String notitie = jsonObject.getString("notitie");
-                ArrayList<String> bijwerkingen = new ArrayList<>();
-                bijwerkingen.add(bijwerking1);
-                bijwerkingen.add(bijwerking2);
-                bijwerkingen.add(bijwerking3);
-                Dag dag = new Dag(bijwerkingen, notitie, date);
-                Dag.addDag(dag, gebruikersnaam);
+                System.out.println(date);
+                System.out.println(tijd);
+                System.out.println(dosis);
+                System.out.println(medicatie);
+                Inname inname = new Inname(tijd, Double.parseDouble(dosis), new Medicatie(medicatie), date);
+                Inname.addInname(inname, gebruikersnaam);
 
             }
         } catch (Exception e) {
