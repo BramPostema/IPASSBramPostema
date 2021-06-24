@@ -18,17 +18,24 @@ public class InnameResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{gebruikersnaam}")
-    public String doGet(@PathParam("gebruikersnaam") String gebruikersnaam) {
+    @Path("{comboinput}")
+    public String doGet(@PathParam("comboinput") String comboinput) {
+        String[] combo = comboinput.split(":");
+        String gebruikersnaam = combo[0];
+        String datum = combo[1];
+        System.out.println(datum);
+        System.out.println("Get innames voor: "+gebruikersnaam);
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-        ArrayList<Dag> dagen = Patiënt.getDagen(gebruikersnaam);
-        for (Dag dag : dagen) {
-            JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
-            objectBuilder.add("datum", Patiënt.getWachtwoordDatabase(gebruikersnaam));
-            objectBuilder.add("medicatie", Patiënt.getEmailDatabase(gebruikersnaam));
-            objectBuilder.add("tijd", dagen.toString());
-            objectBuilder.add("dosis", dagen.toString());
-            arrayBuilder.add(objectBuilder);
+        ArrayList<Inname> innames = Inname.getInnames(gebruikersnaam, datum);
+        if (innames!=null){
+            for (Inname inname : innames) {
+                JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
+                objectBuilder.add("datum", inname.getDate().toString());
+                objectBuilder.add("medicatie", inname.getMedicatie().getNaam());
+                objectBuilder.add("tijd", inname.getTime().toString());
+                objectBuilder.add("dosis", inname.getDosis());
+                arrayBuilder.add(objectBuilder);
+            }
         }
         JsonArray array = arrayBuilder.build();
         return array.toString();
@@ -54,27 +61,24 @@ public class InnameResource {
     @POST
     @Path("{gebruikersnaam}")
     public void maakInname(@PathParam("gebruikersnaam") String gebruikersnaam, String jsonBody) {
-        System.out.println(gebruikersnaam);
+        System.out.println("Maak inname voor: "+gebruikersnaam);
         JsonObjectBuilder responseObject = Json.createObjectBuilder();
         try {
             StringReader strReader = new StringReader(jsonBody);
             JsonReader jsonReader = Json.createReader(strReader);
             JsonObject jsonObject = jsonReader.readObject();
-            if (jsonObject.getString("medicatie") != null && jsonObject.getString("datum") != null &&
-                    jsonObject.getString("tijd") != null && jsonObject.getString("dosis") != null){
+
+            if ((jsonObject.getString("medicatie") != null && jsonObject.getString("datum") != null) &&
+                (jsonObject.getString("tijd") != null && jsonObject.getString("dosis") != null)){
 
                 String medicatie = jsonObject.getString("medicatie");
                 String dosis = jsonObject.getString("dosis");
                 LocalTime tijd = LocalTime.parse(jsonObject.getString("tijd"));
                 LocalDate date = LocalDate.parse(jsonObject.getString("datum"));
-                System.out.println(date);
-                System.out.println(tijd);
-                System.out.println(dosis);
-                System.out.println(medicatie);
                 Inname inname = new Inname(tijd, Double.parseDouble(dosis), new Medicatie(medicatie), date);
                 Inname.addInname(inname, gebruikersnaam);
-
             }
+
         } catch (Exception e) {
             System.out.println(e);
             responseObject.add("message", "Error: " + e.getMessage());

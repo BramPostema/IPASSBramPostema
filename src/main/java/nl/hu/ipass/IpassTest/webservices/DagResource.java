@@ -17,13 +17,17 @@ public class DagResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{gebruikersnaam}")
     public String doGet(@PathParam("gebruikersnaam") String gebruikersnaam) {
+        System.out.println("Get dag voor: "+gebruikersnaam);
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
         ArrayList<Dag> dagen = Patiënt.getDagen(gebruikersnaam);
-        for(Dag dag:dagen) {
+        for (Dag dag : dagen) {
+            ArrayList<String> bijwerkingen = dag.getBijwerkingen();
             JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
-            objectBuilder.add("datum", Patiënt.getWachtwoordDatabase(gebruikersnaam));
-            objectBuilder.add("notitie", Patiënt.getEmailDatabase(gebruikersnaam));
-            objectBuilder.add("email", dagen.toString());
+            objectBuilder.add("datum", dag.getDatum().toString());
+            objectBuilder.add("notitie", dag.getExtraInformatie());
+            objectBuilder.add("bijwerking1", bijwerkingen.get(0));
+            objectBuilder.add("bijwerking2", bijwerkingen.get(1));
+            objectBuilder.add("bijwerking3", bijwerkingen.get(2));
             arrayBuilder.add(objectBuilder);
         }
         JsonArray array = arrayBuilder.build();
@@ -36,10 +40,13 @@ public class DagResource {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
         ArrayList<Dag> dagen = Patiënt.getDagen(gebruikersnaam);
         for (Dag dag : dagen) {
+            ArrayList<String> bijwerkingen = dag.getBijwerkingen();
             JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
-            objectBuilder.add("datum", Patiënt.getWachtwoordDatabase(gebruikersnaam));
-            objectBuilder.add("notitie", Patiënt.getEmailDatabase(gebruikersnaam));
-            objectBuilder.add("email", dagen.toString());
+            objectBuilder.add("datum", dag.getDatum().toString());
+            objectBuilder.add("notitie", dag.getExtraInformatie());
+            objectBuilder.add("bijwerking1", bijwerkingen.get(0));
+            objectBuilder.add("bijwerking2", bijwerkingen.get(1));
+            objectBuilder.add("bijwerking3", bijwerkingen.get(2));
             arrayBuilder.add(objectBuilder);
         }
         JsonArray array = arrayBuilder.build();
@@ -48,7 +55,7 @@ public class DagResource {
     @POST
     @Path("{test}")
     public void maakDag(@PathParam("test") String gebruikersnaam, String jsonBody){
-        System.out.println(gebruikersnaam);
+        System.out.println("Maak dag voor: "+gebruikersnaam);
         JsonObjectBuilder responseObject = Json.createObjectBuilder();
         try{
             StringReader strReader = new StringReader(jsonBody);
@@ -57,7 +64,6 @@ public class DagResource {
             if (jsonObject.getString("bijwerking1")!=null && jsonObject.getString("bijwerking2")!=null &&
                 jsonObject.getString("bijwerking3")!=null && jsonObject.getString("notitie")!=null &&
                     !jsonObject.getString("datum").equals("")) {
-
                 String bijwerking1 = jsonObject.getString("bijwerking1");
                 String bijwerking2 = jsonObject.getString("bijwerking2");
                 String bijwerking3 = jsonObject.getString("bijwerking3");

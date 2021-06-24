@@ -21,15 +21,16 @@ public class PatientLoginResource {
         JsonObject jsonObject = jsonReader.readObject();
         String gebruikersnaam = jsonObject.getString("gebruikersnaam");
         String wachtwoord =jsonObject.getString("wachtwoord");
-        System.out.println("invoer: "+gebruikersnaam);
-        System.out.println("invoer: "+wachtwoord);
         if(Patiënt.isValid(gebruikersnaam)){
             if(Patiënt.getWachtwoordDatabase(gebruikersnaam).hashCode() == wachtwoord.hashCode()){
+                System.out.println("Goede inlogpoging voor: " + gebruikersnaam);
                 return Response.ok("true").build();
             }else {
+                System.out.println("Foute inlogpoging voor: " + gebruikersnaam);
                 return Response.ok("false").build();
             }
         }else {
+            System.out.println("foute gebruikersnaam: " + gebruikersnaam);
             return Response.ok("false").build();
         }
     }

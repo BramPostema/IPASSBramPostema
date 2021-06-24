@@ -102,9 +102,6 @@ public class Dag{
         innames.add(inname);
     }
 
-    public ArrayList<Inname> getInnames() {
-        return innames;
-    }
 
     @Override
     public String toString() {

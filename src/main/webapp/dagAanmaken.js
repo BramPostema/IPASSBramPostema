@@ -3,13 +3,11 @@ function HideAllPaginas(){
     document.getElementById("DagAanmaken").style.display = "none";
     document.getElementById("InnameNoteren").style.display = "none";
     document.getElementById("DagenOverzicht").style.display = "none";
+    document.getElementById("InnameOverzicht").style.display = "none";
 }
 function ShowInloggen() {
     document.getElementById("knoppen").style.display = "none";
-    document.getElementById("Home").style.display = "none";
-    document.getElementById("DagAanmaken").style.display = "none";
-    document.getElementById("InnameNoteren").style.display = "none";
-    document.getElementById("DagenOverzicht").style.display = "none";
+    HideAllPaginas()
     document.getElementById("Inloggen").style.display = "none";
     document.getElementById("Inloggen").style.display = "block";
 }

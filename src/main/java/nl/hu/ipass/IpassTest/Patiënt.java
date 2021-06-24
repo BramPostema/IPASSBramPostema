@@ -29,7 +29,6 @@ public class Patiënt {
         }
         catch(SQLException e){
             System.out.println(e);
-            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -39,13 +38,11 @@ public class Patiënt {
         try {
             Connection con = DatabaseCon.connect();
             Statement statement = con.createStatement();
-            System.out.println("halo");
             ResultSet res = statement.executeQuery("select count(gebruikersnaam) from Patiënt where gebruikersnaam='"+gebruikersnaam+"'");
             res.next();
             return res.getInt(1)==1;
         }
-        catch (SQLException e){
-            System.out.println(e+" is valid");
+        catch (SQLException ignored){
         }
         return false;
     }
@@ -56,15 +53,12 @@ public class Patiënt {
             Statement statement1 = con.createStatement();
             ResultSet res = statement.executeQuery("select count(gebruikersnaam) from Patiënt where gebruikersnaam='"+naam+"'");
             if(res.getInt(1)==1){
-                ResultSet resultSet = statement1.executeQuery(("select gebruikersnaam, wachtwoord, email FROM Patiënt WHERE gebruikersnaam='"+naam+"'"));
-                Patiënt newPatient = new Patiënt(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3));
-                System.out.println(newPatient);
-                return newPatient;
+                ResultSet resultSet = statement1.executeQuery("select gebruikersnaam, wachtwoord, email FROM Patiënt WHERE gebruikersnaam='"+naam+"'");
+                return new Patiënt(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3));
             }
             return null;
         }
-        catch (SQLException e){
-            System.out.println(e);
+        catch (SQLException ignored){
             return null;
         }
 
@@ -77,17 +71,6 @@ public class Patiënt {
     public void setGebruikersnaam(String gebruikersnaam) {
         this.gebruikersnaam = gebruikersnaam;
     }
-
-
-
-    public void addPatiëntDagen(Dag dag) {
-        //patiëntDagen.add(dag);
-        //TODO query
-    }
-
-//    public ArrayList<Dag> getPatiëntDagen() {
-//        return patiëntDagen;
-//    }
 
     public void setDokter(Dokter dokter) {
         this.dokter = dokter;
@@ -110,7 +93,6 @@ public class Patiënt {
                 bijwerkingen.add(resultSet.getString(5));
                 dagen.add(new Dag(bijwerkingen, resultSet.getString(2), LocalDate.parse(resultSet.getString(1))));
             }
-            System.out.println(dagen);
             return dagen;
         }catch (SQLException e){
             System.out.println(e);

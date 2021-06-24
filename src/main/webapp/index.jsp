@@ -23,7 +23,7 @@
     <script type="text/javascript" src="./PatientService.js"></script>
     <script type="text/javascript" src="./InnameService.js"></script>
 </head>
-<body onload=" javascript:ShowInloggen();">
+<body onload=" ShowInloggen();">
 <p>To invoke the java Dag <a href="restservices/dag">DAGEN</a></p>
 <p><a href="restservices/dokter">DOKTERS</a></p>
 <p>dokter account aanmaken ==> <a href="accountAanmaken.html">DoktersAccountAanmaken</a></p>
@@ -33,7 +33,8 @@
         <button onclick="ShowPagina('Home')">Home</button>
         <button onclick="ShowPagina('DagAanmaken'); SetDate('Datum')" >DagAanmaken</button>
         <button onclick="ShowPagina('InnameNoteren'); SetDate('innameDatum'); SetTime('innameTijd')">InnameNoteren</button>
-        <button onclick="ShowPagina('DagenOverzicht')">DagenOverzicht</button>
+        <button onclick="ShowPagina('DagenOverzicht'); new DagService().getDagen();">DagenOverzicht</button>
+        <button onclick="ShowPagina('InnameOverzicht'); SetDate('innameDatumZoeken');new InnameService().getInname()">InnameOverzicht</button>
         <!--Hier komen later meer opties bij-->
     </div>
 </div>
@@ -101,22 +102,8 @@
 </div>
 <div class="blauwebox" id="DagenOverzicht">
     <h2>DagenOverzicht</h2>
-    <table style="width:100%" id="table">
-        <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Age</th>
-        </tr>
-        <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-        </tr>
-        <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-        </tr>
+    <table style="width:100%" id="dagTable">
+
     </table>
 
 </div>
@@ -133,6 +120,15 @@
     <p id="inlogtext"></p>
 </div>
 <div id="footer">hallooo</div>
+
+<div class="blauwebox" id="InnameOverzicht">
+    <h2>InnameOverzicht</h2>
+    <label><input id="innameDatumZoeken" type="date"><button id="InnameZoeken" onclick="new InnameService().getInname()">Zoeken</button></label>
+    <table style="width:100%" id="innameTable">
+
+
+    </table>
+</div>
 
 </body>
 

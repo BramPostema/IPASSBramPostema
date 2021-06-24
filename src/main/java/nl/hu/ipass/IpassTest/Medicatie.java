@@ -6,9 +6,13 @@ public class Medicatie {
         this.naam = nm;
     }
 
+    public String getNaam() {
+        return naam;
+    }
+
     @Override
     public String toString() {
-        return ""+ naam ;
+        return "Medicatie: "+naam ;
 
     }
 }

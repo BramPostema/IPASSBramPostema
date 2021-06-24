@@ -20,9 +20,36 @@ class InnameService{
     }
 
     getInname(){
-        fetch("/restservices/inname")
+        var key=window.sessionStorage.getItem("gebruikersnaamUser")+":"+document.getElementById("innameDatumZoeken").value
+        fetch("/restservices/inname/"+key)
             .then(response => {return response.json()})
-            .then(data => console.log(data))
+            .then(data => {
+                var table = document.getElementById("innameTable")
+                table.innerHTML = ""
+                var header = table.insertRow(0)
+                var cell1 = header.insertCell(0)
+                var cell2 = header.insertCell(1)
+                var cell3 = header.insertCell(2)
+                cell1.innerHTML = "Tijd"
+                cell2.innerHTML = "Medicatie"
+                cell3.innerHTML = "Dosis"
+                for (var key in data){
+                    if (data.hasOwnProperty(key)) {
+                        var obj = data[key]
+                        console.log(obj["datum"])
+                        this.innameAddRow( obj["tijd"], obj["medicatie"], obj["dosis"])
+                    }}})
 
     }
+    innameAddRow(tijd, medicatie, dosis){
+        var table = document.getElementById("innameTable")
+        var row = table.insertRow(-1)
+        var cell1 = row.insertCell(0)
+        var cell2 = row.insertCell(1)
+        var cell3 = row.insertCell(2)
+        cell1.innerHTML = tijd
+        cell2.innerHTML = medicatie
+        cell3.innerHTML = dosis
+    }
+
 }
