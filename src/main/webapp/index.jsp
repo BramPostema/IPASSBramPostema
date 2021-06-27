@@ -16,6 +16,8 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="shortcut icon"
+          href="./iconTomcatServer.png" />
     <title>Medicatie Tracker</title>
     <script type="text/javascript" src="./dagAanmaken.js"></script>
     <script type="text/javascript" src="./DokterService.js"></script>
@@ -24,9 +26,6 @@
     <script type="text/javascript" src="./InnameService.js"></script>
 </head>
 <body onload=" ShowInloggen();">
-<p>To invoke the java Dag <a href="restservices/dag">DAGEN</a></p>
-<p><a href="restservices/dokter">DOKTERS</a></p>
-<p>dokter account aanmaken ==> <a href="accountAanmaken.html">DoktersAccountAanmaken</a></p>
 <div id="knoppen">
     <h1>Medicatie Tracker</h1>
     <div>

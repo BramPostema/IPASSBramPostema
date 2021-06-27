@@ -12,6 +12,7 @@ class PatientService {
         document.getElementById("makengebruikersnaam").innerHTML = ''
         document.getElementById("makenwachtwoord").innerHTML =''
         document.getElementById("makenemail").innerHTML = ''
+        document.getElementById("PatientAanmakenError").innerHTML=' ';
     }
 
     getPatient(){
@@ -24,18 +25,13 @@ class PatientService {
         let gebruikersnaam = String(document.getElementById("Gebruikersnaam").value);
         let wachtwoord = String(document.getElementById("wachtwoord").value);
         let test = {gebruikersnaam:gebruikersnaam, wachtwoord: wachtwoord}
-
-        console.log(test)
-        const s = String(await fetch("/restservices/patientlogin",
-            {
-                method: "POST",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(test)
-            })
-            .then(res => res.text()));
-
-        console.log(s)
-
+            const s = String(await fetch("/restservices/patientlogin",
+                {
+                    method: "POST",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(test)
+                })
+                .then(res => res.text()));
         if (s === "true"){
             document.getElementById("Inloggen").style.display = "none";
             ShowPagina('knoppen');

@@ -12,7 +12,7 @@ public class Medicatie {
 
     @Override
     public String toString() {
-        return "Medicatie: "+naam ;
+        return naam ;
 
     }
 }

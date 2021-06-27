@@ -7,11 +7,15 @@
     <script type="text/javascript" src="./PatientService.js"></script>
 </head>
 <body>
+<div>
 <form id="accountAanmakenVeld">
-    naam: <input type="text" id="makengebruikersnaam" name="naam"/><br><br>
-    ww: <input type="text" id="makenwachtwoord" name="wachtwoord"/><br><br>
-    naam: <input type="text" id="makenemail" name="email"/><br><br>
-    submit: <input type="button" onclick="aanmaken()"/>
+    <h1>PatiëntAccountAanmaken</h1>
+        naam: <input type="text" id="makengebruikersnaam" name="naam"/><br><br>
+        ww: <input type="text" id="makenwachtwoord" name="wachtwoord"/><br><br>
+        email: <input type="text" id="makenemail" name="email"/><br><br>
+    <input type="button" onclick="aanmaken()" value="Aanmaken"/> <button onclick="window.history.back();">Terug</button><br>
+    <p id="PatientAanmakenError"></p>
+
 </form>
 <script type="text/javascript">
 
@@ -19,15 +23,19 @@
         var data1 = document.getElementById("makengebruikersnaam").value
         var data2 = document.getElementById("makenwachtwoord").value
         var data3 = document.getElementById("makenemail").value
-        document.getElementById("makengebruikersnaam").value = ''
-        document.getElementById("makenwachtwoord").value =''
-        document.getElementById("makenemail").value = ''
-        test = {gebruikersnaam:data1, wachtwoord: data2, email: data3}
-        service = new PatientService()
-        service.addPatient(test)
+        if(data1 === '' || data2 === '' ||data3 ==='') {
+            document.getElementById("PatientAanmakenError").innerHTML = 'voer alle velden in'
+        }else{
+            document.getElementById("makengebruikersnaam").value = ''
+            document.getElementById("makenwachtwoord").value =''
+            document.getElementById("makenemail").value = ''
+            test = {gebruikersnaam:data1, wachtwoord: data2, email: data3}
+            service = new PatientService()
+            service.addPatient(test)
+        }
 
         // addDokter(encData)
     }
 </script>
-
+</div>
 </body>

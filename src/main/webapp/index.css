@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(0, 89, 255, 0.295);
+    background-color: #5d6976;
     margin: 0px; 
     text-align:left;
 }
@@ -26,7 +26,7 @@ body {
 .blauwebox {
     width:1000px;
     margin: auto;
-	background-color:#00e1ff48;
+	background-color:#B7B7B7;
     margin-top: 30px;
 	margin-bottom: 60px;
     padding: 30px;
@@ -42,7 +42,7 @@ body {
 #footer {
     position: fixed;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.507);
+    background-color:#B7B7B7;
     color: white;
     bottom: 0px;
     text-align: center;
